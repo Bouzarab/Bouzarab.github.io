@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OpenSEM Pro — SEM, Statistics & Textual Analysis Software</title>
+  <link rel="icon" type="image/png" href="logo.png">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e1a; color: #e0e0e0; line-height: 1.7; }
@@ -12,7 +13,8 @@
 
     /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,14,26,0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    nav .logo { font-size: 22px; font-weight: 700; color: #ff4d6d; }
+    nav .logo { font-size: 22px; font-weight: 700; color: #ff4d6d; display: flex; align-items: center; gap: 10px; }
+    nav .logo img { height: 32px; width: 32px; }
     nav .logo span { color: #fff; }
     nav ul { list-style: none; display: flex; gap: 30px; }
     nav ul li a { color: #aaa; font-size: 14px; font-weight: 500; transition: color 0.3s; }
@@ -20,6 +22,7 @@
 
     /* HERO */
     .hero { padding: 160px 40px 100px; text-align: center; background: linear-gradient(180deg, #0a0e1a 0%, #111832 100%); }
+    .hero-logo { width: 80px; height: 80px; margin-bottom: 20px; }
     .hero h1 { font-size: 56px; font-weight: 800; margin-bottom: 20px; }
     .hero h1 .highlight { color: #ff4d6d; }
     .hero p { font-size: 20px; color: #999; max-width: 700px; margin: 0 auto 40px; }
@@ -85,7 +88,7 @@
     .download-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 700px; margin: 0 auto; }
     .download-card { background: linear-gradient(145deg, #131832, #0d1125); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 40px; text-align: center; transition: transform 0.3s, border-color 0.3s; }
     .download-card:hover { transform: translateY(-5px); border-color: rgba(255,77,109,0.3); }
-    .download-card .os-icon { font-size: 48px; margin-bottom: 15px; }
+    .download-card .os-icon { height: 48px; margin-bottom: 15px; }
     .download-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
     .download-card p { font-size: 13px; color: #666; margin-bottom: 20px; }
 
@@ -99,6 +102,8 @@
     footer { padding: 50px 40px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
     footer p { font-size: 13px; color: #555; }
     footer a { color: #888; }
+    footer .footer-logo { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 10px; }
+    footer .footer-logo img { height: 24px; width: 24px; }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
@@ -119,7 +124,10 @@
 
   <!-- NAV -->
   <nav>
-    <div class="logo"><span>Open</span>SEM <span>Pro</span></div>
+    <div class="logo">
+      <img src="logo.png" alt="OpenSEM Pro">
+      <span>Open</span>SEM <span>Pro</span>
+    </div>
     <ul>
       <li><a href="#features">Features</a></li>
       <li><a href="#screenshots">Screenshots</a></li>
@@ -131,7 +139,8 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-badge">🚀 The All-in-One Research Analysis Tool</div>
+    <img src="logo.png" alt="OpenSEM Pro" class="hero-logo">
+    <div class="hero-badge">The All-in-One Research Analysis Tool</div>
     <h1>The Power of <span class="highlight">SmartPLS</span>, <span class="highlight">SPSS</span> & <span class="highlight">NVivo</span><br>In One Software</h1>
     <p>OpenSEM Pro combines structural equation modeling, advanced statistics, and textual analysis — at a fraction of the cost.</p>
     <div class="hero-buttons">
@@ -216,7 +225,7 @@
         <tr>
           <th>Feature</th>
           <th class="opensem-col">OpenSEM Pro</th>
-          <th>SmartPLS</th>
+          <th>SmartPLS 4</th>
           <th>SPSS</th>
           <th>NVivo</th>
         </tr>
@@ -232,7 +241,7 @@
         <tr>
           <td>CB-SEM</td>
           <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
+          <td><span class="check">✓</span></td>
           <td><span class="cross">✗</span></td>
           <td><span class="cross">✗</span></td>
         </tr>
@@ -244,28 +253,56 @@
           <td><span class="cross">✗</span></td>
         </tr>
         <tr>
+          <td>NCA & HTMT</td>
+          <td class="opensem-col"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+        </tr>
+        <tr>
+          <td>Interactive Path Diagrams</td>
+          <td class="opensem-col"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+        </tr>
+        <tr>
+          <td>Regression Analysis</td>
+          <td class="opensem-col"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">✗</span></td>
+        </tr>
+        <tr>
           <td>Descriptives & ANOVA</td>
           <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
+          <td><span class="check">✓</span></td>
           <td><span class="check">✓</span></td>
           <td><span class="cross">✗</span></td>
         </tr>
         <tr>
           <td>Factor Analysis (EFA & CFA)</td>
           <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
+          <td><span class="check">✓</span></td>
           <td><span class="check">✓</span></td>
           <td><span class="cross">✗</span></td>
         </tr>
         <tr>
-          <td>Variable Transformations</td>
+          <td>Variable Transformations & Recoding</td>
           <td class="opensem-col"><span class="check">✓</span></td>
           <td><span class="cross">✗</span></td>
           <td><span class="check">✓</span></td>
           <td><span class="cross">✗</span></td>
         </tr>
         <tr>
-          <td>Regression Analysis</td>
+          <td>Compare Means & Nonparametric Tests</td>
+          <td class="opensem-col"><span class="check">✓</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">✗</span></td>
+        </tr>
+        <tr>
+          <td>Visual & Optimal Binning</td>
           <td class="opensem-col"><span class="check">✓</span></td>
           <td><span class="cross">✗</span></td>
           <td><span class="check">✓</span></td>
@@ -293,11 +330,11 @@
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
-          <td>Interactive Path Diagrams</td>
+          <td>Theme Identification & Word Clouds</td>
           <td class="opensem-col"><span class="check">✓</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
           <td><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-          <td><span class="cross">✗</span></td>
         </tr>
         <tr>
           <td>macOS & Windows</td>
@@ -321,7 +358,7 @@
   <section id="pricing" class="pricing-bg">
     <div class="section-title">
       <h2>Simple, Transparent Pricing</h2>
-      <p>No hidden fees. Cancel anytime. 14-day free trial included.</p>
+      <p>No hidden fees. 3-day free trial included.</p>
     </div>
     <div class="pricing-grid">
       <div class="pricing-card">
@@ -371,17 +408,17 @@
   <section id="download" class="download-bg">
     <div class="section-title">
       <h2>Download OpenSEM Pro</h2>
-      <p>Try free for 14 days. No credit card required.</p>
+      <p>Try free for 3 days. No credit card required.</p>
     </div>
     <div class="download-grid">
       <div class="download-card">
-        <div class="os-icon">🍎</div>
+        <img src="https://cdn-icons-png.flaticon.com/512/0/747.png" alt="macOS" class="os-icon">
         <h3>macOS</h3>
         <p>Requires macOS 10.13 or later</p>
         <a href="https://github.com/Bouzarab/opensem-pro/releases/latest/download/OpenSEM.Pro-1.5.0.dmg" class="btn btn-primary">Download for Mac</a>
       </div>
       <div class="download-card">
-        <div class="os-icon">🪟</div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Windows_logo_-_2012.svg/250px-Windows_logo_-_2012.svg.png" alt="Windows" class="os-icon">
         <h3>Windows</h3>
         <p>Requires Windows 10 or later</p>
         <a href="https://github.com/Bouzarab/opensem-pro/releases/latest/download/OpenSEM.Pro.Setup.1.5.0.exe" class="btn btn-primary">Download for Windows</a>
@@ -397,7 +434,7 @@
     <div class="faq-list">
       <div class="faq-item">
         <h4>Is there a free trial?</h4>
-        <p>Yes! OpenSEM Pro comes with a 14-day free trial with full access to all features. No credit card required.</p>
+        <p>Yes! OpenSEM Pro comes with a 3-day free trial with full access to all features. No credit card required.</p>
       </div>
       <div class="faq-item">
         <h4>Can I use it on both Mac and Windows?</h4>
@@ -405,15 +442,11 @@
       </div>
       <div class="faq-item">
         <h4>How does it compare to SmartPLS?</h4>
-        <p>OpenSEM Pro includes all the PLS-SEM features you'd expect (bootstrap, IPMA, MGA, FIMIX, NCA, HTMT, and more), plus CB-SEM, full statistical analysis (like SPSS), and textual analysis (like NVivo) — all in one tool at a fraction of the price.</p>
+        <p>OpenSEM Pro includes all the PLS-SEM and CB-SEM features you'd expect (bootstrap, IPMA, MGA, FIMIX, NCA, HTMT, and more), plus comprehensive statistical analysis tools (like SPSS), and qualitative textual analysis (like NVivo) — all in one tool at a fraction of the price.</p>
       </div>
       <div class="faq-item">
         <h4>Do I need an internet connection?</h4>
         <p>An internet connection is required for license activation and periodic verification. Once activated, the software works offline for your day-to-day analysis.</p>
-      </div>
-      <div class="faq-item">
-        <h4>Can I get a refund?</h4>
-        <p>We offer a 14-day free trial so you can evaluate the software before purchasing. If you experience any issues after purchase, please contact us and we'll work with you to resolve them.</p>
       </div>
       <div class="faq-item">
         <h4>Do you offer academic or institutional pricing?</h4>
@@ -424,7 +457,10 @@
 
   <!-- FOOTER -->
   <footer>
-    <p style="margin-bottom: 10px;"><span style="color:#ff4d6d; font-weight:700;">OpenSEM</span> <span style="color:#fff; font-weight:700;">Pro</span></p>
+    <div class="footer-logo">
+      <img src="logo.png" alt="OpenSEM Pro">
+      <span style="color:#ff4d6d; font-weight:700;">OpenSEM</span> <span style="color:#fff; font-weight:700;">Pro</span>
+    </div>
     <p>&copy; 2026 OpenSEM Pro. All rights reserved. | <a href="mailto:contact@opensempro.com">Contact</a> | <a href="https://github.com/Bouzarab/opensem-pro">GitHub</a></p>
   </footer>
 
