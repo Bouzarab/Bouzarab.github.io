@@ -13,9 +13,9 @@
 
     /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,14,26,0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    nav .logo { font-size: 22px; font-weight: 700; color: #ff4d6d; display: flex; align-items: center; gap: 10px; }
+    nav .logo { font-size: 22px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; text-decoration: none; }
     nav .logo img { height: 32px; width: 32px; }
-    nav .logo span { color: #fff; }
+    nav .logo .red { color: #ff4d6d; }
     nav ul { list-style: none; display: flex; gap: 30px; }
     nav ul li a { color: #aaa; font-size: 14px; font-weight: 500; transition: color 0.3s; }
     nav ul li a:hover { color: #fff; text-decoration: none; }
@@ -44,7 +44,7 @@
     .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
     .pillar { background: linear-gradient(145deg, #131832, #0d1125); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 40px 30px; text-align: center; transition: transform 0.3s, border-color 0.3s; }
     .pillar:hover { transform: translateY(-5px); border-color: rgba(255,77,109,0.3); }
-    .pillar-icon { font-size: 48px; margin-bottom: 20px; }
+    .pillar-icon { height: 48px; margin-bottom: 20px; }
     .pillar h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; color: #fff; }
     .pillar p { font-size: 14px; color: #888; margin-bottom: 20px; }
     .pillar ul { list-style: none; text-align: left; }
@@ -124,10 +124,10 @@
 
   <!-- NAV -->
   <nav>
-    <div class="logo">
+    <a href="#" class="logo">
       <img src="logo.png" alt="OpenSEM Pro">
-      <span>Open</span>SEM <span>Pro</span>
-    </div>
+      <span class="red">OpenSEM</span> Pro
+    </a>
     <ul>
       <li><a href="#features">Features</a></li>
       <li><a href="#screenshots">Screenshots</a></li>
@@ -157,7 +157,7 @@
     </div>
     <div class="pillars">
       <div class="pillar">
-        <div class="pillar-icon">📊</div>
+        <img src="https://img.icons8.com/ios7/600/FFFFFF/share-2.png" alt="SEM" class="pillar-icon">
         <h3>Structural Equation Modeling</h3>
         <p>Build and test path models with latent variables using PLS-SEM, CB-SEM, and advanced statistical methods.</p>
         <ul>
@@ -170,7 +170,7 @@
         </ul>
       </div>
       <div class="pillar">
-        <div class="pillar-icon">🧮</div>
+        <img src="https://openclipart.org/image/800px/343515" alt="Statistics" class="pillar-icon">
         <h3>Statistical Analysis</h3>
         <p>Comprehensive statistical tools rivaling SPSS — descriptives, transformations, regressions, and more.</p>
         <ul>
@@ -183,7 +183,7 @@
         </ul>
       </div>
       <div class="pillar">
-        <div class="pillar-icon">📝</div>
+        <img src="https://flaticons.net/icon.php?slug_category=user-interface&slug_icon=data-analysis" alt="Textual Analysis" class="pillar-icon">
         <h3>Textual Analysis</h3>
         <p>Qualitative and quantitative text analysis with coding, NLP, AI-assisted insights, and corpus management.</p>
         <ul>
@@ -412,7 +412,7 @@
     </div>
     <div class="download-grid">
       <div class="download-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/0/747.png" alt="macOS" class="os-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/500px-Apple_logo_grey.svg.png" alt="macOS" class="os-icon">
         <h3>macOS</h3>
         <p>Requires macOS 10.13 or later</p>
         <a href="https://github.com/Bouzarab/opensem-pro/releases/latest/download/OpenSEM.Pro-1.5.0.dmg" class="btn btn-primary">Download for Mac</a>
