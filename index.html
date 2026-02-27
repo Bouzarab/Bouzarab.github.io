@@ -52,9 +52,22 @@
 
     /* SCREENSHOTS */
     .screenshots-bg { background: #080c18; }
-    .screenshot-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 1100px; margin: 0 auto; }
-    .screenshot-grid img { width: 100%; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); transition: transform 0.3s; cursor: pointer; }
-    .screenshot-grid img:hover { transform: scale(1.02); }
+    .carousel-wrapper { position: relative; max-width: 1100px; margin: 0 auto; height: 500px; perspective: 1200px; display: flex; align-items: center; justify-content: center; }
+    .carousel-track { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; }
+    .carousel-slide { position: absolute; top: 50%; left: 50%; width: 500px; height: 400px; transform: translate(-50%, -50%); border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: all 0.6s ease; cursor: pointer; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+    .carousel-slide.active { transform: translate(-50%, -50%) translateZ(0px) rotateY(0deg); opacity: 1; z-index: 5; }
+    .carousel-slide.left { transform: translate(-110%, -50%) translateZ(-150px) rotateY(25deg); opacity: 0.6; z-index: 3; }
+    .carousel-slide.right { transform: translate(10%, -50%) translateZ(-150px) rotateY(-25deg); opacity: 0.6; z-index: 3; }
+    .carousel-slide.far-left { transform: translate(-150%, -50%) translateZ(-300px) rotateY(35deg); opacity: 0.2; z-index: 1; }
+    .carousel-slide.far-right { transform: translate(50%, -50%) translateZ(-300px) rotateY(-35deg); opacity: 0.2; z-index: 1; }
+    .carousel-slide.hidden { transform: translate(-50%, -50%) translateZ(-400px); opacity: 0; z-index: 0; }
+    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 24px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; transition: background 0.3s; backdrop-filter: blur(5px); }
+    .carousel-btn:hover { background: rgba(255,77,109,0.3); }
+    .carousel-btn.prev { left: 20px; }
+    .carousel-btn.next { right: 20px; }
+    .carousel-caption { text-align: center; margin-top: 20px; color: #888; font-size: 14px; min-height: 24px; transition: opacity 0.3s; }
+    @media (max-width: 768px) { .carousel-slide { width: 280px; height: 220px; } .carousel-wrapper { height: 320px; } }
 
     /* COMPARISON */
     .comparison-table { max-width: 900px; margin: 0 auto; border-collapse: collapse; width: 100%; }
@@ -202,14 +215,19 @@
       <h2>See It in Action</h2>
       <p>A professional, intuitive interface designed for researchers.</p>
     </div>
-    <div class="screenshot-grid">
-      <img src="screenshots/screen1.png" alt="PLS-SEM Path Model with Results" onclick="openLightbox(this)">
-      <img src="screenshots/screen2.png" alt="Analysis Menu with Bootstrap and MGA" onclick="openLightbox(this)">
-      <img src="screenshots/screen3.png" alt="Textual Analysis - Stop Words Explorer" onclick="openLightbox(this)">
-      <img src="screenshots/screen4.png" alt="Textual Analysis - Coding Documents" onclick="openLightbox(this)">
-      <img src="screenshots/screen5.png" alt="Workspace Selection" onclick="openLightbox(this)">
-      <img src="screenshots/screen6.png" alt="Import Files for Textual Analysis" onclick="openLightbox(this)">
+   <div class="carousel-wrapper">
+      <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+      <div class="carousel-track">
+        <div class="carousel-slide" data-caption="PLS-SEM Path Model with Results"><img src="screenshots/screen1.png" alt="PLS-SEM Path Model with Results" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide" data-caption="Analysis Menu with Bootstrap and MGA"><img src="screenshots/screen2.png" alt="Analysis Menu with Bootstrap and MGA" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide" data-caption="Textual Analysis - Stop Words Explorer"><img src="screenshots/screen3.png" alt="Textual Analysis - Stop Words Explorer" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide" data-caption="Textual Analysis - Coding Documents"><img src="screenshots/screen4.png" alt="Textual Analysis - Coding Documents" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide" data-caption="Workspace Selection"><img src="screenshots/screen5.png" alt="Workspace Selection" onclick="openLightbox(this)"></div>
+        <div class="carousel-slide" data-caption="Import Files for Textual Analysis"><img src="screenshots/screen6.png" alt="Import Files for Textual Analysis" onclick="openLightbox(this)"></div>
+      </div>
+      <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
     </div>
+    <div class="carousel-caption" id="carousel-caption"></div>
   </section>
 
   <!-- COMPARISON -->
@@ -477,7 +495,32 @@
     }
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') moveCarousel(-1);
+      if (e.key === 'ArrowRight') moveCarousel(1);
     });
+
+    var currentSlide = 0;
+    var slides = document.querySelectorAll('.carousel-slide');
+    var totalSlides = slides.length;
+
+    function updateCarousel() {
+      var positions = ['far-left', 'left', 'active', 'right', 'far-right'];
+      slides.forEach(function(s) { s.className = 'carousel-slide hidden'; });
+      for (var i = -2; i <= 2; i++) {
+        var idx = (currentSlide + i + totalSlides) % totalSlides;
+        slides[idx].className = 'carousel-slide ' + positions[i + 2];
+      }
+      var caption = slides[currentSlide].getAttribute('data-caption');
+      document.getElementById('carousel-caption').textContent = caption;
+    }
+
+    function moveCarousel(dir) {
+      currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
+      updateCarousel();
+    }
+
+    updateCarousel();
+    setInterval(function() { moveCarousel(1); }, 5000);
   </script>
 
 </body>
