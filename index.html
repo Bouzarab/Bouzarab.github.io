@@ -166,11 +166,11 @@
     .lightbox { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 2000; justify-content: center; align-items: center; cursor: pointer; }
     .lightbox.active { display: flex; }
     .lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
-  .scroll-top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;border-radius:50%;background:rgba(255,77,109,0.15);border:1px solid rgba(255,77,109,0.3);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s ease;z-index:999;text-decoration:none}
-.scroll-top:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.4)}
+  .scroll-top{position:fixed;bottom:30px;right:30px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s ease;z-index:999;text-decoration:none;transform:scale(1)}
+.scroll-top:hover{background:rgba(255,255,255,0.25);border-color:rgba(255,255,255,0.5);transform:scale(1.2)}
 .scroll-top:hover svg{stroke:#fff}
 .scroll-top.visible{opacity:1;visibility:visible}
-.scroll-top svg{width:20px;height:20px;stroke:#ff4d6d;stroke-width:2;fill:none}
+.scroll-top svg{width:16px;height:16px;stroke:rgba(255,255,255,0.4);stroke-width:2;fill:none;transition:stroke 0.3s ease}
 </style>
 </head>
 <body>
