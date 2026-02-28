@@ -544,6 +544,13 @@
     var slides = document.querySelectorAll('.carousel-slide');
     var totalSlides = slides.length;
 
+     var carouselWrapper = document.querySelector('.carousel-wrapper');
+    var autoInterval = null;
+    var mouseSpeed = 0;
+    var touchStartX = 0;
+    var touchDragging = false;
+    var accumulator = 0;
+
     function updateCarousel() {
       var positions = ['far-left', 'left', 'active', 'right', 'far-right'];
       slides.forEach(function(s) { s.className = 'carousel-slide hidden'; });
@@ -561,7 +568,69 @@
     }
 
     updateCarousel();
-    setInterval(function() { moveCarousel(1); }, 5000);
+
+    // Desktop: mouse position controls direction and speed
+    carouselWrapper.addEventListener('mousemove', function(e) {
+      var rect = carouselWrapper.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var center = rect.width / 2;
+      var deadZone = rect.width * 0.1;
+      var offset = x - center;
+
+      if (Math.abs(offset) < deadZone) {
+        mouseSpeed = 0;
+      } else {
+        mouseSpeed = (offset - (offset > 0 ? deadZone : -deadZone)) / (center - deadZone);
+      }
+    });
+
+    carouselWrapper.addEventListener('mouseenter', function() {
+      if (autoInterval) { clearInterval(autoInterval); autoInterval = null; }
+      accumulator = 0;
+      autoInterval = setInterval(function() {
+        if (mouseSpeed === 0) return;
+        accumulator += mouseSpeed * 0.15;
+        if (accumulator >= 1) {
+          moveCarousel(1);
+          accumulator = 0;
+        } else if (accumulator <= -1) {
+          moveCarousel(-1);
+          accumulator = 0;
+        }
+      }, 50);
+    });
+
+    carouselWrapper.addEventListener('mouseleave', function() {
+      mouseSpeed = 0;
+      accumulator = 0;
+      if (autoInterval) { clearInterval(autoInterval); autoInterval = null; }
+      autoInterval = setInterval(function() { moveCarousel(1); }, 5000);
+    });
+
+    // Touch: swipe left/right on mobile/tablet
+    carouselWrapper.addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+      touchDragging = true;
+      if (autoInterval) { clearInterval(autoInterval); autoInterval = null; }
+    }, { passive: true });
+
+    carouselWrapper.addEventListener('touchmove', function(e) {
+      if (!touchDragging) return;
+      var touchX = e.touches[0].clientX;
+      var diff = touchX - touchStartX;
+      if (Math.abs(diff) > 50) {
+        moveCarousel(diff > 0 ? -1 : 1);
+        touchStartX = touchX;
+      }
+    }, { passive: true });
+
+    carouselWrapper.addEventListener('touchend', function() {
+      touchDragging = false;
+      autoInterval = setInterval(function() { moveCarousel(1); }, 5000);
+    });
+
+    // Default auto-scroll
+    autoInterval = setInterval(function() { moveCarousel(1); }, 5000);
   </script>
 
 <a href="#" class="scroll-top" id="scrollTop" aria-label="Back to top">
