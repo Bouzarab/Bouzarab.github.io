@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="google-site-verification" content="tFlTgcOO_he_l0esMp1E40qqaXq4lgTCgcFJE5f_MO8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OpenSEM Pro – PLS-SEM, Statistics & Textual Analysis Software</title>
@@ -11,7 +11,7 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://opensempro.com/">
 
-  <!-- Open Graph (Facebook, LinkedIn) -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://opensempro.com/">
   <meta property="og:title" content="OpenSEM Pro – PLS-SEM, Statistics & Textual Analysis in One Software">
@@ -27,7 +27,7 @@
   <meta name="twitter:description" content="The power of SmartPLS, SPSS & NVivo in one affordable tool. Build path models, run advanced statistics, and analyze text. From $12/month.">
   <meta name="twitter:image" content="https://opensempro.com/screenshots/screen1.png">
 
-    <link rel="icon" type="image/png" href="logo.png">
+  <link rel="icon" type="image/png" href="logo.png">
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0Y35NWRSZS"></script>
@@ -72,178 +72,1429 @@
     ]
   }
   </script>
+
+  <!-- Preload fonts for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e1a; color: #e0e0e0; line-height: 1.7; }
-    a { color: #ff4d6d; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg-primary: #050816;
+      --bg-secondary: #0a0f24;
+      --bg-card: #0d1230;
+      --bg-card-hover: #111640;
+      --accent: #ff3a5c;
+      --accent-light: #ff6b85;
+      --accent-glow: rgba(255, 58, 92, 0.3);
+      --accent-subtle: rgba(255, 58, 92, 0.08);
+      --text-primary: #f0f0f5;
+      --text-secondary: #8a8fb5;
+      --text-muted: #5a5f82;
+      --border: rgba(255, 255, 255, 0.06);
+      --border-hover: rgba(255, 58, 92, 0.3);
+      --glass: rgba(13, 18, 48, 0.6);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --gradient-accent: linear-gradient(135deg, #ff3a5c 0%, #ff6b85 50%, #ff8fa3 100%);
+      --gradient-blue: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --shadow-glow: 0 0 60px rgba(255, 58, 92, 0.15);
+      --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+      --shadow-card-hover: 0 16px 64px rgba(0, 0, 0, 0.4);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
 
-    /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,14,26,0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    nav .logo { font-size: 22px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    nav .logo img { height: 32px; width: 32px; }
-    nav .logo .red { color: #ff4d6d; }
-    nav ul { list-style: none; display: flex; gap: 30px; }
-    nav ul li a { color: #aaa; font-size: 14px; font-weight: 500; transition: color 0.3s; }
-    nav ul li a:hover { color: #ff4e6d; text-decoration: none; }
+    html { scroll-behavior: smooth; }
 
-    /* HERO */
-    .hero { padding: 160px 40px 100px; text-align: center; background: linear-gradient(180deg, #0a0e1a 0%, #111832 100%); }
-    .hero h1 { font-size: 56px; font-weight: 800; margin-bottom: 20px; }
-    .hero h1 .highlight { color: #ff4d6d; }
-    .hero p { font-size: 20px; color: #999; max-width: 700px; margin: 0 auto 40px; }
-    .hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-    .btn { padding: 14px 32px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; border: none; transition: all 0.3s; display: inline-block; }
-    .btn-primary { background: #ff4d6d; color: #fff; }
-    .btn-primary:hover { background: #ff6b85; text-decoration: none; }
-    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,77,109,0.7); } 70% { box-shadow: 0 0 0 20px rgba(255,77,109,0); } 100% { box-shadow: 0 0 0 0 rgba(255,77,109,0); } }
-    .btn-pulse { animation: pulse 2s ease-out 3; }
-    .btn-secondary { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
-    .btn-secondary:hover { border-color: #ff4d6d; text-decoration: none; }
-    .hero-badge { display: inline-block; background: rgba(255,77,109,0.1); color: #ff4d6d; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 25px; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-    /* SECTION */
-    section { padding: 100px 40px; }
-    .section-title { text-align: center; margin-bottom: 60px; }
-    .section-title h2 { font-size: 38px; font-weight: 700; margin-bottom: 15px; }
-    .section-title p { font-size: 17px; color: #888; max-width: 600px; margin: 0 auto; }
+    a { color: var(--accent); text-decoration: none; transition: all 0.3s ease; }
+    a:hover { color: var(--accent-light); }
 
-    /* THREE PILLARS */
-    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
-    .pillar { background: linear-gradient(145deg, #131832, #0d1125); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 40px 30px; text-align: center; transition: transform 0.3s, border-color 0.3s; }
-    .pillar:hover { transform: translateY(-5px); border-color: rgba(255,77,109,0.3); }
-    .pillar-icon { height: 48px; margin-bottom: 20px; }
-    .pillar h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; color: #fff; }
-    .pillar p { font-size: 14px; color: #888; margin-bottom: 20px; }
-    .pillar ul { list-style: none; text-align: left; }
-    .pillar ul li { font-size: 14px; color: #aaa; padding: 6px 0; padding-left: 22px; position: relative; }
-    .pillar ul li::before { content: "✓"; color: #ff4d6d; position: absolute; left: 0; font-weight: 700; }
+    /* Custom selection */
+    ::selection { background: var(--accent); color: #fff; }
 
-    /* SCREENSHOTS */
-    .screenshots-bg { background: #080c18; }
-    .carousel-wrapper { position: relative; max-width: 1100px; margin: 0 auto; height: 500px; perspective: 1200px; display: flex; align-items: center; justify-content: center; }
-    .carousel-track { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; }
-    .carousel-slide { position: absolute; top: 50%; left: 50%; width: 500px; height: 400px; transform: translate(-50%, -50%); border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: all 0.6s ease; cursor: pointer; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    /* ============================================
+       ANIMATED BACKGROUND - PARTICLE CANVAS
+       ============================================ */
+    #particles-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Ambient orbs */
+    .ambient-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+      animation: orbFloat 20s ease-in-out infinite;
+    }
+    .orb-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255,58,92,0.08) 0%, transparent 70%);
+      top: -200px; right: -200px;
+      animation-delay: 0s;
+    }
+    .orb-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(102,126,234,0.06) 0%, transparent 70%);
+      bottom: -150px; left: -150px;
+      animation-delay: -7s;
+    }
+    .orb-3 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(118,75,162,0.05) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: -14s;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(40px, -30px) scale(1.05); }
+      50% { transform: translate(-20px, 40px) scale(0.95); }
+      75% { transform: translate(30px, 20px) scale(1.02); }
+    }
+
+    /* Grid overlay */
+    .grid-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 80px 80px;
+      z-index: 0;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+    }
+
+    /* ============================================
+       SCROLL REVEAL ANIMATIONS
+       ============================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ============================================
+       NAVIGATION
+       ============================================ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 40px;
+      height: 72px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(5, 8, 22, 0.7);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(5, 8, 22, 0.92);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+    nav .logo {
+      font-size: 20px; font-weight: 800; color: #fff;
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; letter-spacing: -0.3px;
+    }
+    nav .logo img { height: 30px; width: 30px; filter: drop-shadow(0 0 8px rgba(255,58,92,0.4)); }
+    nav .logo .red { color: var(--accent); }
+    nav ul { list-style: none; display: flex; gap: 8px; align-items: center; }
+    nav ul li a {
+      color: var(--text-secondary);
+      font-size: 13px; font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    nav ul li a:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.05);
+      text-decoration: none;
+    }
+    nav ul li:last-child a {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      padding: 8px 20px;
+    }
+    nav ul li:last-child a:hover {
+      background: var(--accent-light);
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    /* Mobile menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none; border: none;
+      cursor: pointer; padding: 8px;
+      flex-direction: column; gap: 5px;
+    }
+    .mobile-menu-btn span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text-secondary);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .mobile-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
+    .mobile-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ============================================
+       HERO SECTION
+       ============================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 120px 40px 80px;
+      text-align: center;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    /* Hero radial gradient */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%; left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(255,58,92,0.07) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Animated rings */
+    .hero-rings {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    .hero-ring {
+      position: absolute;
+      border: 1px solid rgba(255,58,92,0.06);
+      border-radius: 50%;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: ringPulse 8s ease-in-out infinite;
+    }
+    .hero-ring:nth-child(1) { width: 400px; height: 400px; animation-delay: 0s; }
+    .hero-ring:nth-child(2) { width: 600px; height: 600px; animation-delay: -2s; border-color: rgba(102,126,234,0.04); }
+    .hero-ring:nth-child(3) { width: 800px; height: 800px; animation-delay: -4s; }
+    .hero-ring:nth-child(4) { width: 1000px; height: 1000px; animation-delay: -6s; border-color: rgba(102,126,234,0.03); }
+
+    @keyframes ringPulse {
+      0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.03); }
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-subtle);
+      border: 1px solid rgba(255,58,92,0.15);
+      color: var(--accent);
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 13px; font-weight: 600;
+      margin-bottom: 32px;
+      animation: badgeGlow 3s ease-in-out infinite;
+      backdrop-filter: blur(10px);
+    }
+    .hero-badge .dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+    @keyframes dotPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.5); }
+    }
+    @keyframes badgeGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,58,92,0); }
+      50% { box-shadow: 0 0 20px rgba(255,58,92,0.1); }
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5.5vw, 72px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+      max-width: 900px;
+    }
+    .hero h1 .highlight {
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero h1 .line { display: block; }
+
+    .hero-subtitle {
+      font-size: clamp(16px, 1.8vw, 20px);
+      color: var(--text-secondary);
+      max-width: 620px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex; gap: 16px;
+      justify-content: center; flex-wrap: wrap;
+      margin-bottom: 64px;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-size: 15px; font-weight: 600;
+      cursor: pointer; border: none;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-sans);
+      position: relative; overflow: hidden;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+    .btn-primary:hover {
+      background: var(--accent-light);
+      box-shadow: 0 8px 40px rgba(255,58,92,0.4);
+      transform: translateY(-2px);
+      text-decoration: none;
+      color: #fff;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 0; height: 0;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+    .btn-primary:hover::after { width: 300px; height: 300px; }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+      text-decoration: none;
+      color: #fff;
+    }
+
+    /* Hero stats */
+    .hero-stats {
+      display: flex; gap: 48px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .hero-stat {
+      text-align: center;
+    }
+    .hero-stat-number {
+      font-size: 32px; font-weight: 800;
+      color: #fff;
+      font-family: var(--font-mono);
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 32px;
+      right: 40px;
+      left: auto;
+      transform: none;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 8px;
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+    .scroll-indicator span {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+    .scroll-mouse {
+      width: 24px; height: 38px;
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      position: relative;
+    }
+    .scroll-mouse::after {
+      content: '';
+      position: absolute;
+      top: 8px; left: 50%;
+      transform: translateX(-50%);
+      width: 3px; height: 8px;
+      background: var(--accent);
+      border-radius: 3px;
+      animation: scrollDot 2s ease-in-out infinite;
+    }
+    @keyframes scrollDot {
+      0%, 100% { top: 8px; opacity: 1; }
+      50% { top: 20px; opacity: 0.3; }
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    /* ============================================
+       SECTION BASICS
+       ============================================ */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 120px 40px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .section-label::before, .section-label::after {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--accent);
+      opacity: 0.4;
+    }
+    .section-header h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .section-header p {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Divider line with glow */
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), rgba(255,58,92,0.15), var(--border), transparent);
+      margin: 0;
+    }
+
+    /* ============================================
+       THREE PILLARS - FEATURES
+       ============================================ */
+    #features {
+      background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pillar {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .pillar::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gradient-accent);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .pillar::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 0%), rgba(255,58,92,0.04) 0%, transparent 50%);
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+    .pillar:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-glow);
+    }
+    .pillar:hover::before { opacity: 1; }
+    .pillar:hover::after { opacity: 1; }
+
+    .pillar-icon-wrap {
+      width: 56px; height: 56px;
+      border-radius: 16px;
+      background: var(--accent-subtle);
+      border: 1px solid rgba(255,58,92,0.12);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+      transition: all 0.4s ease;
+    }
+    .pillar:hover .pillar-icon-wrap {
+      background: rgba(255,58,92,0.12);
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(255,58,92,0.15);
+    }
+    .pillar-icon-wrap svg {
+      width: 24px; height: 24px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .pillar h3 {
+      font-size: 22px; font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+    .pillar > p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+    .pillar ul { list-style: none; }
+    .pillar ul li {
+      font-size: 14px;
+      color: var(--text-secondary);
+      padding: 8px 0;
+      padding-left: 28px;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .pillar ul li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: rgba(255,58,92,0.08);
+      border: 1px solid rgba(255,58,92,0.2);
+    }
+    .pillar ul li::after {
+      content: '✓';
+      position: absolute;
+      left: 4px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 10px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .pillar:hover ul li { color: var(--text-primary); }
+
+    /* ============================================
+       SCREENSHOTS - CINEMATIC CAROUSEL
+       ============================================ */
+    #screenshots {
+      background: var(--bg-secondary);
+      overflow: hidden;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 540px;
+      perspective: 1200px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .carousel-track {
+      position: relative;
+      width: 100%; height: 100%;
+      transform-style: preserve-3d;
+    }
+    .carousel-slide {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 560px; height: 380px;
+      transform: translate(-50%, -50%);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      box-shadow: var(--shadow-card);
+      background: var(--bg-card);
+    }
     .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
-    .carousel-slide.active { transform: translate(-50%, -50%) translateZ(0px) rotateY(0deg); opacity: 1; z-index: 5; }
-    .carousel-slide.left { transform: translate(-110%, -50%) translateZ(-150px) rotateY(25deg); opacity: 0.6; z-index: 3; }
-    .carousel-slide.right { transform: translate(10%, -50%) translateZ(-150px) rotateY(-25deg); opacity: 0.6; z-index: 3; }
-    .carousel-slide.far-left { transform: translate(-150%, -50%) translateZ(-300px) rotateY(35deg); opacity: 0.2; z-index: 1; }
-    .carousel-slide.far-right { transform: translate(50%, -50%) translateZ(-300px) rotateY(-35deg); opacity: 0.2; z-index: 1; }
+    .carousel-slide.active {
+      transform: translate(-50%, -50%) translateZ(0px) rotateY(0deg);
+      opacity: 1; z-index: 5;
+      box-shadow: 0 20px 80px rgba(255,58,92,0.15), var(--shadow-card);
+      border-color: rgba(255,58,92,0.2);
+    }
+    .carousel-slide.left { transform: translate(-115%, -50%) translateZ(-120px) rotateY(20deg); opacity: 0.5; z-index: 3; }
+    .carousel-slide.right { transform: translate(15%, -50%) translateZ(-120px) rotateY(-20deg); opacity: 0.5; z-index: 3; }
+    .carousel-slide.far-left { transform: translate(-155%, -50%) translateZ(-250px) rotateY(30deg); opacity: 0.15; z-index: 1; }
+    .carousel-slide.far-right { transform: translate(55%, -50%) translateZ(-250px) rotateY(-30deg); opacity: 0.15; z-index: 1; }
     .carousel-slide.hidden { transform: translate(-50%, -50%) translateZ(-400px); opacity: 0; z-index: 0; }
-    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 24px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; transition: background 0.3s; backdrop-filter: blur(5px); }
-    .carousel-btn:hover { background: rgba(255,77,109,0.3); }
+
+    .carousel-btn {
+      position: absolute; top: 50%;
+      transform: translateY(-50%);
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      color: #fff; font-size: 20px;
+      cursor: pointer; z-index: 10;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.4s ease;
+    }
+    .carousel-btn:hover {
+      background: rgba(255,58,92,0.2);
+      border-color: var(--accent);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
     .carousel-btn.prev { left: 20px; }
     .carousel-btn.next { right: 20px; }
-    .carousel-caption { text-align: center; margin-top: 20px; color: #888; font-size: 14px; min-height: 24px; transition: opacity 0.3s; }
-    @media (max-width: 768px) { .carousel-slide { width: 280px; height: 220px; } .carousel-wrapper { height: 320px; } }
 
-    /* COMPARISON */
-    .comparison-table { max-width: 900px; margin: 0 auto; border-collapse: collapse; width: 100%; }
-    .comparison-table th, .comparison-table td { padding: 16px 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 15px; }
-    .comparison-table th { color: #888; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
-    .comparison-table td:first-child { text-align: left; color: #ccc; font-weight: 500; }
-    .comparison-table .check { color: #4ade80; font-size: 18px; }
-    .comparison-table .cross { color: #555; font-size: 18px; }
-    .comparison-table .opensem-col { background: rgba(255,77,109,0.05); }
-    .comparison-table thead th.opensem-col { color: #ff4d6d; font-weight: 700; }
+    .carousel-caption {
+      text-align: center;
+      margin-top: 24px;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 500;
+      min-height: 24px;
+      transition: opacity 0.3s;
+    }
 
-    /* PRICING */
-    .pricing-bg { background: linear-gradient(180deg, #0a0e1a, #111832); }
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1000px; margin: 0 auto; }
-    .pricing-card { background: linear-gradient(145deg, #131832, #0d1125); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 40px 30px; text-align: center; position: relative; transition: transform 0.3s, border-color 0.3s; }
-    .pricing-card:hover { transform: translateY(-5px); border-color: rgba(255,77,109,0.3); }
-    .pricing-card.popular { border-color: #ff4d6d; }
-    .pricing-card.popular::before { content: "MOST POPULAR"; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #ff4d6d; color: #fff; padding: 4px 16px; border-radius: 12px; font-size: 11px; font-weight: 700; letter-spacing: 1px; }
-    .pricing-card h3 { font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 8px; }
-    .pricing-card .price { font-size: 48px; font-weight: 800; color: #fff; margin: 20px 0 5px; }
-    .pricing-card .price span { font-size: 16px; font-weight: 400; color: #888; }
-    .pricing-card .price-sub { font-size: 14px; color: #666; margin-bottom: 25px; }
-    .pricing-card ul { list-style: none; text-align: left; margin-bottom: 30px; }
-    .pricing-card ul li { font-size: 14px; color: #aaa; padding: 8px 0; padding-left: 22px; position: relative; }
-    .pricing-card ul li::before { content: "✓"; color: #ff4d6d; position: absolute; left: 0; font-weight: 700; }
-    .pricing-card .btn { width: 100%; text-align: center; }
+    .carousel-dots {
+      display: flex; justify-content: center; gap: 8px;
+      margin-top: 20px;
+    }
+    .carousel-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: none; cursor: pointer;
+      transition: all 0.4s ease;
+    }
+    .carousel-dot.active {
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent-glow);
+      width: 24px;
+      border-radius: 4px;
+    }
 
-    /* DOWNLOAD */
-    .download-bg { background: #080c18; }
-    .download-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 700px; margin: 0 auto; }
-    .download-card { background: linear-gradient(145deg, #131832, #0d1125); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 40px; text-align: center; transition: transform 0.3s, border-color 0.3s; }
-    .download-card:hover { transform: translateY(-5px); border-color: rgba(255,77,109,0.3); }
-    .download-card .os-icon { height: 48px; margin-bottom: 15px; }
-    .download-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
-    .download-card p { font-size: 13px; color: #666; margin-bottom: 20px; }
+    /* ============================================
+       COMPARISON TABLE
+       ============================================ */
+    #compare {
+      background: var(--bg-primary);
+    }
 
-    /* FAQ */
-    .faq-list { max-width: 700px; margin: 0 auto; }
-    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 25px 0; }
-    .faq-item h4 { font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 10px; cursor: pointer; }
-    .faq-item p { font-size: 15px; color: #888; }
+    .comparison-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+    }
 
-    /* FOOTER */
-    footer { padding: 50px 40px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
-    footer p { font-size: 13px; color: #555; }
-    footer a { color: #888; }
-    footer .footer-logo { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 10px; }
-    footer .footer-logo img { height: 24px; width: 24px; }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .comparison-table th, .comparison-table td {
+      padding: 16px 20px;
+      text-align: center;
+      font-size: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .comparison-table thead {
+      background: rgba(255,255,255,0.02);
+    }
+    .comparison-table th {
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 20px;
+    }
+    .comparison-table td:first-child {
+      text-align: left;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .comparison-table .check {
+      color: #4ade80;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .comparison-table .cross {
+      color: rgba(255,255,255,0.12);
+      font-size: 16px;
+    }
+    .comparison-table .opensem-col {
+      background: rgba(255,58,92,0.04);
+    }
+    .comparison-table thead th.opensem-col {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .comparison-table tbody tr {
+      transition: background 0.3s ease;
+    }
+    .comparison-table tbody tr:hover {
+      background: rgba(255,255,255,0.02);
+    }
+    .comparison-table tbody tr:last-child td {
+      border-bottom: none;
+      padding: 20px;
+    }
+    .price-highlight {
+      color: #4ade80 !important;
+      font-weight: 700 !important;
+      font-size: 16px !important;
+    }
 
-    /* RESPONSIVE */
+    /* ============================================
+       PRICING
+       ============================================ */
+    #pricing {
+      background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1060px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 44px 32px;
+      text-align: center;
+      position: relative;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(255,58,92,0.06) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-glow);
+    }
+    .pricing-card:hover::before { opacity: 1; }
+
+    .pricing-card.popular {
+      border-color: var(--accent);
+      background: linear-gradient(180deg, rgba(255,58,92,0.06) 0%, var(--bg-card) 40%);
+      transform: scale(1.04);
+      box-shadow: var(--shadow-glow);
+    }
+    .pricing-card.popular:hover { transform: scale(1.04) translateY(-4px); }
+
+    .popular-badge {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      padding: 6px 20px;
+      border-radius: 0 0 10px 10px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .pricing-card h3 {
+      font-size: 18px; font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+      position: relative;
+    }
+    .pricing-price {
+      font-size: 52px; font-weight: 900;
+      color: #fff; margin: 20px 0 4px;
+      letter-spacing: -2px;
+      position: relative;
+    }
+    .pricing-price span {
+      font-size: 16px; font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0;
+    }
+    .pricing-sub {
+      font-size: 13px; color: var(--text-muted);
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .pricing-card ul {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .pricing-card ul li {
+      font-size: 14px;
+      color: var(--text-secondary);
+      padding: 10px 0;
+      padding-left: 28px;
+      position: relative;
+    }
+    .pricing-card ul li::before {
+      content: '✓';
+      position: absolute; left: 0;
+      color: var(--accent); font-weight: 700; font-size: 13px;
+    }
+    .pricing-card .btn { width: 100%; justify-content: center; position: relative; }
+
+    /* Student & Institution cards */
+    .special-pricing {
+      max-width: 1060px;
+      margin: 48px auto 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .special-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      text-align: center;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .special-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-glow);
+    }
+    .special-card .icon-large { font-size: 40px; margin-bottom: 16px; }
+    .special-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+    .special-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px; }
+
+    .student-plans {
+      display: flex; justify-content: center; gap: 16px; margin-bottom: 0; flex-wrap: wrap;
+    }
+    .student-plan {
+      display: inline-block;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      padding: 20px 28px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      min-width: 160px;
+    }
+    .student-plan:hover {
+      border-color: var(--accent);
+      background: var(--accent-subtle);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .student-plan-name { color: #fff; font-size: 13px; font-weight: 700; }
+    .student-plan-price { color: var(--accent); font-size: 28px; font-weight: 800; margin: 6px 0; }
+    .student-plan-period { color: var(--text-muted); font-size: 12px; }
+
+    .inst-stats {
+      display: flex; justify-content: center; gap: 40px; margin: 24px 0; flex-wrap: wrap;
+    }
+    .inst-stat { text-align: center; }
+    .inst-stat-value { color: var(--accent); font-size: 28px; font-weight: 800; }
+    .inst-stat-label { color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+    /* ============================================
+       DOWNLOAD
+       ============================================ */
+    #download {
+      background: var(--bg-secondary);
+    }
+
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .download-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px 36px;
+      text-align: center;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .download-card::before {
+      content: '';
+      position: absolute;
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(255,58,92,0.06) 0%, transparent 70%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .download-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-glow);
+    }
+    .download-card:hover::before { opacity: 1; }
+
+    .os-icon-wrap {
+      width: 64px; height: 64px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      transition: all 0.4s ease;
+    }
+    .download-card:hover .os-icon-wrap {
+      background: var(--accent-subtle);
+      border-color: rgba(255,58,92,0.2);
+      transform: scale(1.08);
+    }
+    .os-icon-wrap img { height: 32px; width: 32px; filter: brightness(0.8); }
+    .download-card:hover .os-icon-wrap img { filter: brightness(1); }
+
+    .download-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+    .download-card .dl-req { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+
+    /* ============================================
+       FAQ
+       ============================================ */
+    #faq {
+      background: var(--bg-primary);
+    }
+
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      background: var(--bg-card);
+    }
+    .faq-item:hover { border-color: rgba(255,255,255,0.1); }
+    .faq-item.open { border-color: var(--border-hover); }
+
+    .faq-question {
+      padding: 20px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .faq-question:hover { background: rgba(255,255,255,0.02); }
+    .faq-question h4 {
+      font-size: 16px; font-weight: 600;
+      color: #fff; flex: 1;
+    }
+    .faq-toggle {
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.4s ease;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+    .faq-toggle svg {
+      width: 14px; height: 14px;
+      stroke: var(--text-muted);
+      fill: none; stroke-width: 2;
+      transition: all 0.4s ease;
+    }
+    .faq-item.open .faq-toggle {
+      background: var(--accent-subtle);
+      border-color: rgba(255,58,92,0.2);
+    }
+    .faq-item.open .faq-toggle svg {
+      transform: rotate(180deg);
+      stroke: var(--accent);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), padding 0.5s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+    }
+    .faq-answer p {
+      padding: 0 24px 20px;
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    footer {
+      position: relative; z-index: 1;
+      padding: 60px 40px 40px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      background: var(--bg-primary);
+    }
+    .footer-logo {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin-bottom: 12px;
+    }
+    .footer-logo img { height: 24px; width: 24px; }
+    .footer-logo .red { color: var(--accent); font-weight: 800; }
+    .footer-logo .white { color: #fff; font-weight: 800; }
+    footer .footer-text {
+      font-size: 13px; color: var(--text-muted);
+    }
+    footer .footer-text a { color: var(--text-secondary); transition: color 0.3s; }
+    footer .footer-text a:hover { color: var(--accent); }
+    footer .footer-links {
+      margin-top: 16px;
+      display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
+    }
+    footer .footer-links a {
+      color: var(--text-muted); font-size: 13px; font-weight: 500;
+      transition: color 0.3s;
+    }
+    footer .footer-links a:hover { color: var(--accent); }
+
+    /* ============================================
+       LIGHTBOX
+       ============================================ */
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(20px);
+      z-index: 2000;
+      justify-content: center; align-items: center;
+      cursor: pointer;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 90%; max-height: 90%;
+      border-radius: var(--radius-md);
+      box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+    }
+
+    /* ============================================
+       SCROLL TO TOP
+       ============================================ */
+    .scroll-top {
+      position: fixed; bottom: 32px; right: 32px;
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      opacity: 0; visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 999;
+      text-decoration: none;
+    }
+    .scroll-top:hover {
+      background: rgba(255,58,92,0.15);
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+    .scroll-top.visible { opacity: 1; visibility: visible; }
+    .scroll-top svg {
+      width: 18px; height: 18px;
+      stroke: var(--text-muted);
+      stroke-width: 2; fill: none;
+      transition: stroke 0.3s ease;
+    }
+    .scroll-top:hover svg { stroke: var(--accent); }
+
+    /* ============================================
+       TRUST BAR / SOCIAL PROOF
+       ============================================ */
+    .trust-bar {
+      padding: 60px 40px;
+      text-align: center;
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.01);
+    }
+    .trust-label {
+      font-size: 12px; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 2px;
+      font-weight: 600; margin-bottom: 32px;
+    }
+    .trust-logos {
+      display: flex; align-items: center; justify-content: center;
+      gap: 48px; flex-wrap: wrap;
+      opacity: 0.4;
+    }
+    .trust-logos span {
+      font-size: 18px; font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: -0.5px;
+    }
+
+    /* ============================================
+       ANIMATED COUNTER
+       ============================================ */
+    .counter-section {
+      padding: 80px 40px;
+      position: relative; z-index: 1;
+      background: var(--bg-secondary);
+    }
+    .counter-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .counter-item {
+      text-align: center;
+      padding: 32px 20px;
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: all 0.4s ease;
+    }
+    .counter-item:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+    .counter-number {
+      font-size: 40px; font-weight: 900;
+      font-family: var(--font-mono);
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+    .counter-label {
+      font-size: 13px; color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ============================================
+       CTA BANNER
+       ============================================ */
+    .cta-banner {
+      position: relative; z-index: 1;
+      padding: 100px 40px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255,58,92,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cta-banner h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+      position: relative;
+    }
+    .cta-banner p {
+      font-size: 17px; color: var(--text-secondary);
+      max-width: 500px; margin: 0 auto 40px;
+      position: relative;
+    }
+    .cta-banner .btn { position: relative; }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 1024px) {
+      .pillars { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-card.popular { grid-column: span 2; max-width: 400px; margin: 0 auto; }
+      .counter-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
     @media (max-width: 768px) {
-      .hero { padding: 120px 20px 60px; }
-      .hero h1 { font-size: 28px; }
-      .hero p { font-size: 16px; }
-      .hero-buttons { flex-direction: column; align-items: center; }
-      .hero-badge { font-size: 12px; }
-      section { padding: 60px 20px; }
-      .section-title h2 { font-size: 26px; }
-      .section-title p { font-size: 15px; }
-      .pillars, .pricing-grid, .download-grid { grid-template-columns: 1fr; }
-      .pillar { padding: 30px 20px; }
-      nav { padding: 12px 15px; }
+      nav { padding: 0 20px; height: 64px; }
       nav ul { display: none; }
-      nav .logo { font-size: 18px; }
-      .carousel-wrapper { height: 280px; }
-      .carousel-slide { width: 240px; height: 180px; }
-      .carousel-btn { width: 36px; height: 36px; font-size: 18px; }
-      .carousel-btn.prev { left: 5px; }
-      .carousel-btn.next { right: 5px; }
-      .carousel-caption { font-size: 12px; }
-      .comparison-table { font-size: 11px; display: block; overflow-x: auto; white-space: nowrap; }
-      .comparison-table th, .comparison-table td { padding: 8px 6px; }
-      .pricing-card { padding: 30px 20px; }
-      .pricing-card .price { font-size: 36px; }
+      .mobile-menu-btn { display: flex; }
+
+      /* Mobile menu overlay */
+      .mobile-nav {
+        display: none;
+        position: fixed; inset: 0;
+        background: rgba(5,8,22,0.98);
+        backdrop-filter: blur(20px);
+        z-index: 999;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+      }
+      .mobile-nav.open { display: flex; }
+      .mobile-nav a {
+        font-size: 20px; font-weight: 600;
+        color: var(--text-secondary);
+        padding: 12px 32px;
+        transition: color 0.3s;
+      }
+      .mobile-nav a:hover { color: #fff; text-decoration: none; }
+
+      section { padding: 80px 20px; }
+      .hero { padding: 100px 20px 60px; min-height: auto; }
+      .hero h1 { letter-spacing: -1px; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .hero-buttons .btn { width: 100%; max-width: 280px; justify-content: center; }
+      .hero-stats { gap: 32px; }
+      .scroll-indicator { display: none; }
+
+      .pillars { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-card.popular { grid-column: auto; max-width: none; }
+      .special-pricing { grid-template-columns: 1fr; }
       .download-grid { grid-template-columns: 1fr; }
-      .download-card { padding: 30px 20px; }
-      .faq-item h4 { font-size: 15px; }
-      .faq-item p { font-size: 14px; }
-      footer { padding: 30px 20px; }
+      .counter-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .carousel-wrapper { height: 300px; }
+      .carousel-slide { width: 260px; height: 200px; }
+      .carousel-btn { width: 40px; height: 40px; font-size: 16px; }
+      .carousel-btn.prev { left: 8px; }
+      .carousel-btn.next { right: 8px; }
+
+      .comparison-wrap { border-radius: var(--radius-md); }
+      .comparison-table { display: block; overflow-x: auto; }
+      .comparison-table th, .comparison-table td { padding: 12px 10px; font-size: 12px; white-space: nowrap; }
+
+      .section-header { margin-bottom: 48px; }
+      .hero-ring { display: none; }
     }
 
     @media (max-width: 480px) {
-      .hero h1 { font-size: 24px; }
-      .hero p { font-size: 14px; }
+      .hero h1 { font-size: 28px; }
+      .hero-subtitle { font-size: 15px; }
       .btn { padding: 12px 24px; font-size: 14px; }
-      .section-title h2 { font-size: 22px; }
-      .carousel-wrapper { height: 240px; }
-      .carousel-slide { width: 200px; height: 150px; }
-      .pillar h3 { font-size: 18px; }
-      .pricing-card .price { font-size: 32px; }
+      .pillar { padding: 32px 24px; }
+      .pricing-card { padding: 32px 24px; }
+      .counter-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .counter-number { font-size: 32px; }
+      .inst-stats { gap: 24px; }
     }
 
-    /* LIGHTBOX */
-    .lightbox { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 2000; justify-content: center; align-items: center; cursor: pointer; }
-    .lightbox.active { display: flex; }
-    .lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
-  .scroll-top{position:fixed;bottom:30px;right:30px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s ease;z-index:999;text-decoration:none;transform:scale(1)}
-.scroll-top:hover{background:rgba(255,255,255,0.25);border-color:rgba(255,255,255,0.5);transform:scale(1.2)}
-.scroll-top:hover svg{stroke:#fff}
-.scroll-top.visible{opacity:1;visibility:visible}
-.scroll-top svg{width:16px;height:16px;stroke:rgba(255,255,255,0.4);stroke-width:2;fill:none;transition:stroke 0.3s ease}
-</style>
+    /* ============================================
+       GLASSMORPHISM UTILITY
+       ============================================ */
+    .glass-card {
+      background: var(--glass);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+    }
+
+    /* ============================================
+       GRADIENT TEXT UTILITY
+       ============================================ */
+    .gradient-text {
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ============================================
+       MAGNETIC CURSOR GLOW (desktop only)
+       ============================================ */
+    .cursor-glow {
+      position: fixed;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.3s ease;
+    }
+
+    /* Smooth text appearance */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-badge { animation: fadeInUp 0.8s ease forwards; }
+    .hero h1 { animation: fadeInUp 0.8s ease 0.1s forwards; opacity: 0; }
+    .hero-subtitle { animation: fadeInUp 0.8s ease 0.2s forwards; opacity: 0; }
+    .hero-buttons { animation: fadeInUp 0.8s ease 0.3s forwards; opacity: 0; }
+    .hero-stats { animation: fadeInUp 0.8s ease 0.5s forwards; opacity: 0; }
+    .scroll-indicator { animation: fadeInUp 0.8s ease 0.7s forwards; opacity: 0; }
+  </style>
 </head>
 <body>
 
+  <!-- AMBIENT BACKGROUND EFFECTS -->
+  <canvas id="particles-canvas"></canvas>
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+  <div class="ambient-orb orb-3"></div>
+  <div class="grid-overlay"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- MOBILE NAV OVERLAY -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#features" onclick="closeMobileNav()">Features</a>
+    <a href="#screenshots" onclick="closeMobileNav()">Screenshots</a>
+    <a href="#compare" onclick="closeMobileNav()">Compare</a>
+    <a href="#pricing" onclick="closeMobileNav()">Pricing</a>
+    <a href="#download" onclick="closeMobileNav()">Download</a>
+  </div>
+
   <!-- NAV -->
-  <nav>
+  <nav id="mainNav">
     <a href="#" class="logo">
       <img src="logo.png" alt="OpenSEM Pro">
       <span class="red">OpenSEM</span> Pro
@@ -253,367 +1504,452 @@
       <li><a href="#screenshots">Screenshots</a></li>
       <li><a href="#compare">Compare</a></li>
       <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#download">Download</a></li>
+      <li><a href="#download">Download Trial</a></li>
     </ul>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileNav()" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-badge">🚀 The All-in-One Research Analysis Tool</div>
-    <h1>The Power of <span class="highlight">SmartPLS</span>, <span class="highlight">SPSS</span> & <span class="highlight">NVivo</span><br>In One Software</h1>
-    <p>OpenSEM Pro combines structural equation modeling, advanced statistics, and textual analysis — at a fraction of the cost.</p>
+    <div class="hero-rings">
+      <div class="hero-ring"></div>
+      <div class="hero-ring"></div>
+      <div class="hero-ring"></div>
+      <div class="hero-ring"></div>
+    </div>
+
+    <div class="hero-badge">
+      <span class="dot"></span>
+      The All-in-One Research Analysis Tool
+    </div>
+
+    <h1>
+      <span class="line">The Power of <span class="highlight">SmartPLS</span>,</span>
+      <span class="line"><span class="highlight">SPSS</span> & <span class="highlight">NVivo</span></span>
+      <span class="line">In One Software</span>
+    </h1>
+
+    <p class="hero-subtitle">OpenSEM Pro combines structural equation modeling, advanced statistics, and textual analysis — at a fraction of the cost. Built for researchers who demand more.</p>
+
     <div class="hero-buttons">
-       <a href="#download" class="btn btn-primary btn-pulse">Download Free Trial</a>
-      <a href="#pricing" class="btn btn-secondary">View Pricing</a>
+      <a href="#download" class="btn btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Free Trial
+      </a>
+      <a href="#pricing" class="btn btn-secondary">View Pricing →</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-number" data-count="30" data-suffix="+">0+</div>
+        <div class="hero-stat-label">Analysis Methods</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number" data-count="3" data-suffix="-in-1">0</div>
+        <div class="hero-stat-label">Tools Combined</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number" data-count="90" data-suffix="%">0%</div>
+        <div class="hero-stat-label">Cost Savings</div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-mouse"></div>
+      <span>Scroll</span>
     </div>
   </section>
 
+  <!-- TRUST BAR -->
+  <div class="trust-bar reveal">
+    <div class="trust-label">Trusted by Researchers & Academics Worldwide</div>
+    <div class="trust-logos">
+      <span>PLS-SEM</span>
+      <span>CB-SEM</span>
+      <span>Bootstrap</span>
+      <span>IPMA</span>
+      <span>MGA</span>
+      <span>FIMIX</span>
+      <span>NCA</span>
+      <span>HTMT</span>
+    </div>
+  </div>
+
   <!-- THREE PILLARS -->
   <section id="features">
-    <div class="section-title">
-      <h2>Three Tools. One Software.</h2>
-      <p>Stop paying for multiple expensive licenses. OpenSEM Pro does it all.</p>
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Core Capabilities</div>
+        <h2>Three Tools. One Software.</h2>
+        <p>Stop paying for multiple expensive licenses. OpenSEM Pro does it all.</p>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar reveal reveal-delay-1">
+          <div class="pillar-icon-wrap">
+            <svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><line x1="7" y1="12" x2="17" y2="6"/><line x1="7" y1="12" x2="17" y2="18"/></svg>
+          </div>
+          <h3>Structural Equation Modeling</h3>
+          <p>Build and test path models with latent variables using PLS-SEM, CB-SEM, and advanced statistical methods.</p>
+          <ul>
+            <li>Interactive visual path diagram builder</li>
+            <li>PLS-SEM, CB-SEM, OLS, PCA</li>
+            <li>Bootstrap, IPMA, MGA, FIMIX</li>
+            <li>NCA, HTMT, Model Fit Indices</li>
+            <li>Blindfolding & Permutation Test</li>
+            <li>Interactive charts & visualizations</li>
+          </ul>
+        </div>
+
+        <div class="pillar reveal reveal-delay-2">
+          <div class="pillar-icon-wrap">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </div>
+          <h3>Statistical Analysis</h3>
+          <p>Comprehensive statistical tools rivaling SPSS — descriptives, transformations, regressions, and more.</p>
+          <ul>
+            <li>Descriptives & ANOVA</li>
+            <li>Factor Analysis (EFA & CFA)</li>
+            <li>Compare Means & Nonparametric tests</li>
+            <li>Recode, compute & transform variables</li>
+            <li>Visual & optimal binning</li>
+            <li>Missing values & dummy variables</li>
+          </ul>
+        </div>
+
+        <div class="pillar reveal reveal-delay-3">
+          <div class="pillar-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <h3>Textual Analysis</h3>
+          <p>Qualitative and quantitative text analysis with coding, NLP, AI-assisted insights, and corpus management.</p>
+          <ul>
+            <li>Import .txt, .pdf, .docx, .xlsx/.csv files</li>
+            <li>Manual & AI-assisted coding</li>
+            <li>Tokenization, DFM, Sentiment, NER</li>
+            <li>Theme identification & summarization</li>
+            <li>Pattern discovery & word clouds</li>
+            <li>Zipf's Law & stop words analysis</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="pillars">
-      <div class="pillar">
-        <img src="https://img.icons8.com/ios7/600/FFFFFF/share-2.png" alt="SEM" class="pillar-icon">
-        <h3>Structural Equation Modeling</h3>
-        <p>Build and test path models with latent variables using PLS-SEM, CB-SEM, and advanced statistical methods.</p>
-        <ul>
-          <li>Interactive visual path diagram builder</li>
-          <li>PLS-SEM, CB-SEM, OLS, PCA</li>
-          <li>Bootstrap, IPMA, MGA, FIMIX</li>
-          <li>NCA, HTMT, Model Fit Indices</li>
-          <li>Blindfolding & Permutation Test</li>
-          <li>Interactive charts & visualizations</li>
-        </ul>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- STATS COUNTER -->
+  <section class="counter-section">
+    <div class="counter-grid">
+      <div class="counter-item reveal reveal-delay-1">
+        <div class="counter-number" data-count="6">0</div>
+        <div class="counter-label">SEM Algorithms</div>
       </div>
-      <div class="pillar">
-        <img src="https://openclipart.org/image/800px/343515" alt="Statistics" class="pillar-icon">
-        <h3>Statistical Analysis</h3>
-        <p>Comprehensive statistical tools rivaling SPSS — descriptives, transformations, regressions, and more.</p>
-        <ul>
-          <li>Descriptives & ANOVA</li>
-          <li>Factor Analysis (EFA & CFA)</li>
-          <li>Compare Means & Nonparametric tests</li>
-          <li>Recode, compute & transform variables</li>
-          <li>Visual & optimal binning</li>
-          <li>Missing values & dummy variables</li>
-        </ul>
+      <div class="counter-item reveal reveal-delay-2">
+        <div class="counter-number" data-count="25" data-suffix="+">0+</div>
+        <div class="counter-label">Statistical Tests</div>
       </div>
-      <div class="pillar">
-        <img src="https://flaticons.net/icon.php?slug_category=user-interface&slug_icon=data-analysis" alt="Textual Analysis" class="pillar-icon">
-        <h3>Textual Analysis</h3>
-        <p>Qualitative and quantitative text analysis with coding, NLP, AI-assisted insights, and corpus management.</p>
-        <ul>
-          <li>Import .txt, .pdf, .docx, .xlsx/.csv files</li>
-          <li>Manual & AI-assisted coding</li>
-          <li>Tokenization, DFM, Sentiment, NER</li>
-          <li>Theme identification & summarization</li>
-          <li>Pattern discovery & word clouds</li>
-          <li>Zipf's Law & stop words analysis</li>
-        </ul>
+      <div class="counter-item reveal reveal-delay-3">
+        <div class="counter-number" data-count="12" data-suffix="+">0+</div>
+        <div class="counter-label">NLP Features</div>
+      </div>
+      <div class="counter-item reveal reveal-delay-4">
+        <div class="counter-number" data-count="2">0</div>
+        <div class="counter-label">Platforms</div>
       </div>
     </div>
   </section>
 
   <!-- SCREENSHOTS -->
-  <section id="screenshots" class="screenshots-bg">
-    <div class="section-title">
-      <h2>See It in Action</h2>
-      <p>A professional, intuitive interface designed for researchers.</p>
-    </div>
-   <div class="carousel-wrapper">
-      <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
-      <div class="carousel-track">
-        <div class="carousel-slide" data-caption="PLS-SEM Path Model with Results"><img src="screenshots/screen1.png" alt="PLS-SEM Path Model with Results" onclick="openLightbox(this)"></div>
-        <div class="carousel-slide" data-caption="Analysis Menu with Bootstrap and MGA"><img src="screenshots/screen2.png" alt="Analysis Menu with Bootstrap and MGA" onclick="openLightbox(this)"></div>
-        <div class="carousel-slide" data-caption="Textual Analysis - Stop Words Explorer"><img src="screenshots/screen3.png" alt="Textual Analysis - Stop Words Explorer" onclick="openLightbox(this)"></div>
-        <div class="carousel-slide" data-caption="Textual Analysis - Coding Documents"><img src="screenshots/screen4.png" alt="Textual Analysis - Coding Documents" onclick="openLightbox(this)"></div>
-        <div class="carousel-slide" data-caption="Workspace Selection"><img src="screenshots/screen5.png" alt="Workspace Selection" onclick="openLightbox(this)"></div>
-        <div class="carousel-slide" data-caption="Import Files for Textual Analysis"><img src="screenshots/screen6.png" alt="Import Files for Textual Analysis" onclick="openLightbox(this)"></div>
+  <section id="screenshots">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Product Preview</div>
+        <h2>See It in Action</h2>
+        <p>A professional, intuitive interface designed for researchers.</p>
       </div>
-      <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
+
+      <div class="carousel-wrapper reveal-scale">
+        <button class="carousel-btn prev" onclick="moveCarousel(-1)" aria-label="Previous">&#10094;</button>
+        <div class="carousel-track">
+          <div class="carousel-slide" data-caption="PLS-SEM Path Model with Results"><img src="screenshots/screen1.png" alt="PLS-SEM Path Model with Results" onclick="openLightbox(this)" loading="lazy"></div>
+          <div class="carousel-slide" data-caption="Analysis Menu with Bootstrap and MGA"><img src="screenshots/screen2.png" alt="Analysis Menu with Bootstrap and MGA" onclick="openLightbox(this)" loading="lazy"></div>
+          <div class="carousel-slide" data-caption="Textual Analysis - Stop Words Explorer"><img src="screenshots/screen3.png" alt="Textual Analysis - Stop Words Explorer" onclick="openLightbox(this)" loading="lazy"></div>
+          <div class="carousel-slide" data-caption="Textual Analysis - Coding Documents"><img src="screenshots/screen4.png" alt="Textual Analysis - Coding Documents" onclick="openLightbox(this)" loading="lazy"></div>
+          <div class="carousel-slide" data-caption="Workspace Selection"><img src="screenshots/screen5.png" alt="Workspace Selection" onclick="openLightbox(this)" loading="lazy"></div>
+          <div class="carousel-slide" data-caption="Import Files for Textual Analysis"><img src="screenshots/screen6.png" alt="Import Files for Textual Analysis" onclick="openLightbox(this)" loading="lazy"></div>
+        </div>
+        <button class="carousel-btn next" onclick="moveCarousel(1)" aria-label="Next">&#10095;</button>
+      </div>
+      <div class="carousel-caption" id="carousel-caption"></div>
+      <div class="carousel-dots" id="carousel-dots"></div>
     </div>
-    <div class="carousel-caption" id="carousel-caption"></div>
   </section>
+
+  <div class="section-divider"></div>
 
   <!-- COMPARISON -->
   <section id="compare">
-    <div class="section-title">
-      <h2>How OpenSEM Pro Compares</h2>
-      <p>One affordable license replaces three expensive tools.</p>
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Why Switch</div>
+        <h2>How OpenSEM Pro Compares</h2>
+        <p>One affordable license replaces three expensive tools.</p>
+      </div>
+
+      <div class="comparison-wrap reveal-scale">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="opensem-col">OpenSEM Pro</th>
+              <th>SmartPLS 4</th>
+              <th>SPSS</th>
+              <th>NVivo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>PLS-SEM</td><td class="opensem-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+            <tr><td>CB-SEM</td><td class="opensem-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+            <tr><td>Bootstrap, IPMA, MGA, FIMIX</td><td class="opensem-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+            <tr><td>NCA & HTMT</td><td class="opensem-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+            <tr><td>Interactive Path Diagrams</td><td class="opensem-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+            <tr><td>Regression Analysis</td><td class="opensem-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+            <tr><td>Descriptives & ANOVA</td><td class="opensem-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+            <tr><td>Factor Analysis (EFA & CFA)</td><td class="opensem-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+            <tr><td>Variable Transformations & Recoding</td><td class="opensem-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+            <tr><td>Compare Means & Nonparametric Tests</td><td class="opensem-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+            <tr><td>Visual & Optimal Binning</td><td class="opensem-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+            <tr><td>Qualitative Text Coding</td><td class="opensem-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>NLP & Sentiment Analysis</td><td class="opensem-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Import .pdf, .docx, .txt</td><td class="opensem-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Theme Identification & Word Clouds</td><td class="opensem-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>macOS & Windows</td><td class="opensem-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr>
+              <td><strong>Price (Individual/year)</strong></td>
+              <td class="opensem-col"><strong class="price-highlight">$120</strong></td>
+              <td><strong>~$430</strong></td>
+              <td><strong>~$1,188</strong></td>
+              <td><strong>~$1,350</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <table class="comparison-table">
-      <thead>
-        <tr>
-          <th>Feature</th>
-          <th class="opensem-col">OpenSEM Pro</th>
-          <th>SmartPLS 4</th>
-          <th>SPSS</th>
-          <th>NVivo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>PLS-SEM</td>
-          <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-          <td><span class="cross">✗</span></td>
-        </tr>
-        <tr>
-          <td>CB-SEM</td>
-          <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-          <td><span class="cross">✗</span></td>
-        </tr>
-        <tr>
-          <td>Bootstrap, IPMA, MGA, FIMIX</td>
-          <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-          <td><span class="cross">✗</span></td>
-        </tr>
-        <tr>
-          <td>NCA & HTMT</td>
-          <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-          <td><span class="cross">✗</span></td>
-        </tr>
-        <tr>
-          <td>Interactive Path Diagrams</td>
-          <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-          <td><span class="cross">✗</span></td>
-        </tr>
-        <tr>
-          <td>Regression Analysis</td>
-          <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-        </tr>
-        <tr>
-          <td>Descriptives & ANOVA</td>
-          <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-        </tr>
-        <tr>
-          <td>Factor Analysis (EFA & CFA)</td>
-          <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-        </tr>
-        <tr>
-          <td>Variable Transformations & Recoding</td>
-          <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-          <td><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-        </tr>
-        <tr>
-          <td>Compare Means & Nonparametric Tests</td>
-          <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-          <td><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-        </tr>
-        <tr>
-          <td>Visual & Optimal Binning</td>
-          <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-          <td><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-        </tr>
-        <tr>
-          <td>Qualitative Text Coding</td>
-          <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-          <td><span class="cross">✗</span></td>
-          <td><span class="check">✓</span></td>
-        </tr>
-        <tr>
-          <td>NLP & Sentiment Analysis</td>
-          <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-          <td><span class="cross">✗</span></td>
-          <td><span class="check">✓</span></td>
-        </tr>
-        <tr>
-          <td>Import .pdf, .docx, .txt</td>
-          <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-          <td><span class="cross">✗</span></td>
-          <td><span class="check">✓</span></td>
-        </tr>
-        <tr>
-          <td>Theme Identification & Word Clouds</td>
-          <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="cross">✗</span></td>
-          <td><span class="cross">✗</span></td>
-          <td><span class="check">✓</span></td>
-        </tr>
-        <tr>
-          <td>macOS & Windows</td>
-          <td class="opensem-col"><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
-          <td><span class="check">✓</span></td>
-        </tr>
-        <tr>
-          <td><strong>Price (Individual/year)</strong></td>
-          <td class="opensem-col"><strong style="color:#4ade80;">$120</strong></td>
-          <td><strong>~$430</strong></td>
-          <td><strong>~$1,188</strong></td>
-          <td><strong>~$1,350</strong></td>
-        </tr>
-      </tbody>
-    </table>
   </section>
+
+  <div class="section-divider"></div>
 
   <!-- PRICING -->
-  <section id="pricing" class="pricing-bg">
-    <div class="section-title">
-      <h2>Simple, Transparent Pricing</h2>
-      <p>No hidden fees. 3-day free trial included.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <h3>Monthly</h3>
-        <div class="price">$12<span>/mo</span></div>
-        <div class="price-sub">Billed monthly</div>
-        <ul>
-          <li>Full access to all features</li>
-          <li>SEM + Statistics + Textual Analysis</li>
-          <li>macOS & Windows</li>
-          <li>Email support</li>
-          <li>All future updates</li>
-        </ul>
-        <a href="https://opensempro.lemonsqueezy.com/checkout/buy/1733190d-78b4-4ad6-b0cf-9458c47ae21b" class="btn btn-secondary" id="buy-monthly">Get Started</a>
+  <section id="pricing">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Pricing</div>
+        <h2>Simple, Transparent Pricing</h2>
+        <p>No hidden fees. 3-day free trial included with every plan.</p>
       </div>
-      <div class="pricing-card popular">
-        <h3>Annual</h3>
-        <div class="price">$120<span>/yr</span></div>
-        <div class="price-sub">$10/mo — Save 17%</div>
-        <ul>
-          <li>Full access to all features</li>
-          <li>SEM + Statistics + Textual Analysis</li>
-          <li>macOS & Windows</li>
-          <li>Priority email support</li>
-          <li>All future updates</li>
-        </ul>
-        <a href="https://opensempro.lemonsqueezy.com/checkout/buy/32709e97-a060-48bd-883d-c531adfda412" class="btn btn-primary" id="buy-annual">Get Started</a>
-      </div>
-      <div class="pricing-card">
-        <h3>Lifetime</h3>
-        <div class="price">$998</div>
-        <div class="price-sub">One-time payment</div>
-        <ul>
-          <li>Full access to all features</li>
-          <li>SEM + Statistics + Textual Analysis</li>
-          <li>macOS & Windows</li>
-          <li>Priority email support</li>
-          <li>Lifetime updates included</li>
-        </ul>
-         <a href="https://opensempro.lemonsqueezy.com/checkout/buy/07937b04-bedd-4262-a0d3-58f40bf9a753" class="btn btn-secondary" id="buy-lifetime">Get Started</a>
-      </div>
-    </div>
-    <div style="max-width:700px; margin:50px auto 0; background:linear-gradient(135deg, #0d1025 0%, #141830 100%); border:1px solid rgba(255,77,109,0.15); border-radius:16px; padding:40px; text-align:center;">
-      <div style="font-size:36px; margin-bottom:12px;">🎓</div>
-      <h3 style="color:#fff; font-size:22px; margin-bottom:10px;">Student Pricing</h3>
-      <p style="color:#aaa; font-size:15px; line-height:1.7; margin-bottom:20px;">Full access to all features at a discounted rate for students.</p>
-      <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:24px;">
-        <a href="https://opensempro.lemonsqueezy.com/checkout/buy/61218276-bc54-48c7-832c-1d264ee23a0a" style="display:inline-block; background:#1a1a2e; border:1px solid rgba(255,77,109,0.3); padding:20px 28px; border-radius:10px; text-decoration:none; transition:all 0.2s; min-width:180px;" onmouseover="this.style.borderColor='#ff4d6d'" onmouseout="this.style.borderColor='rgba(255,77,109,0.3)'">
-          <div style="color:#fff; font-size:14px; font-weight:700;">Student Monthly</div>
-          <div style="color:#ff4d6d; font-size:28px; font-weight:800; margin:6px 0;">$5</div>
-          <div style="color:#888; font-size:12px;">per month</div>
-        </a>
-        <a href="https://opensempro.lemonsqueezy.com/checkout/buy/4d2e0320-0701-431a-9ced-c580f8ffaac7" style="display:inline-block; background:#1a1a2e; border:1px solid rgba(255,77,109,0.3); padding:20px 28px; border-radius:10px; text-decoration:none; transition:all 0.2s; min-width:180px;" onmouseover="this.style.borderColor='#ff4d6d'" onmouseout="this.style.borderColor='rgba(255,77,109,0.3)'">
-          <div style="color:#fff; font-size:14px; font-weight:700;">Student Annual</div>
-          <div style="color:#ff4d6d; font-size:28px; font-weight:800; margin:6px 0;">$48</div>
-          <div style="color:#888; font-size:12px;">per year — Save 20%</div>
-        </a>
-      </div>
-    </div>
 
-    <div style="max-width:700px; margin:24px auto 0; background:linear-gradient(135deg, #0d1025 0%, #141830 100%); border:1px solid rgba(255,77,109,0.15); border-radius:16px; padding:40px; text-align:center;">
-      <div style="font-size:36px; margin-bottom:12px;">🏛️</div>
-      <h3 style="color:#fff; font-size:22px; margin-bottom:10px;">Institutions & Universities</h3>
-      <p style="color:#aaa; font-size:15px; line-height:1.7; margin-bottom:8px;">Equip your students and faculty with OpenSEM Pro at a discounted rate.</p>
-      <div style="display:flex; justify-content:center; gap:30px; margin:24px 0; flex-wrap:wrap;">
-        <div style="text-align:center;">
-          <div style="color:#ff4d6d; font-size:28px; font-weight:800;">10+</div>
-          <div style="color:#888; font-size:12px;">Minimum Seats</div>
+      <div class="pricing-grid">
+        <div class="pricing-card reveal reveal-delay-1">
+          <h3>Monthly</h3>
+          <div class="pricing-price">$12<span>/mo</span></div>
+          <div class="pricing-sub">Billed monthly</div>
+          <ul>
+            <li>Full access to all features</li>
+            <li>SEM + Statistics + Textual Analysis</li>
+            <li>macOS & Windows</li>
+            <li>Email support</li>
+            <li>All future updates</li>
+          </ul>
+          <a href="https://opensempro.lemonsqueezy.com/checkout/buy/1733190d-78b4-4ad6-b0cf-9458c47ae21b" class="btn btn-secondary" id="buy-monthly">Get Started</a>
         </div>
-        <div style="text-align:center;">
-          <div style="color:#ff4d6d; font-size:28px; font-weight:800;">Up to 80%</div>
-          <div style="color:#888; font-size:12px;">Volume Discount</div>
+
+        <div class="pricing-card popular reveal reveal-delay-2">
+          <div class="popular-badge">MOST POPULAR</div>
+          <h3>Annual</h3>
+          <div class="pricing-price">$120<span>/yr</span></div>
+          <div class="pricing-sub">$10/mo — Save 17%</div>
+          <ul>
+            <li>Full access to all features</li>
+            <li>SEM + Statistics + Textual Analysis</li>
+            <li>macOS & Windows</li>
+            <li>Priority email support</li>
+            <li>All future updates</li>
+          </ul>
+          <a href="https://opensempro.lemonsqueezy.com/checkout/buy/32709e97-a060-48bd-883d-c531adfda412" class="btn btn-primary" id="buy-annual">Get Started</a>
         </div>
-        <div style="text-align:center;">
-          <div style="color:#ff4d6d; font-size:28px; font-weight:800;">1 Key</div>
-          <div style="color:#888; font-size:12px;">Per Student</div>
+
+        <div class="pricing-card reveal reveal-delay-3">
+          <h3>Lifetime</h3>
+          <div class="pricing-price">$998</div>
+          <div class="pricing-sub">One-time payment</div>
+          <ul>
+            <li>Full access to all features</li>
+            <li>SEM + Statistics + Textual Analysis</li>
+            <li>macOS & Windows</li>
+            <li>Priority email support</li>
+            <li>Lifetime updates included</li>
+          </ul>
+          <a href="https://opensempro.lemonsqueezy.com/checkout/buy/07937b04-bedd-4262-a0d3-58f40bf9a753" class="btn btn-secondary" id="buy-lifetime">Get Started</a>
         </div>
       </div>
-      <p style="color:#999; font-size:13px; line-height:1.7; margin-bottom:24px;">Each student receives their own license key. Includes priority support, custom invoicing, and flexible payment options.</p>
-      <a href="mailto:contact@opensempro.com?subject=Institutional%20License%20Inquiry&body=Institution%20Name:%0ANumber%20of%20Seats:%0AContact%20Person:%0A" style="display:inline-block; background:#ff4d6d; color:#fff; padding:14px 36px; border-radius:8px; font-size:15px; font-weight:700; text-decoration:none; transition:background 0.2s;">Request a Quote</a>
-      <p style="color:#666; font-size:12px; margin-top:16px;">Or email us directly at <a href="mailto:contact@opensempro.com" style="color:#ff4d6d;">contact@opensempro.com</a></p>
+
+      <!-- Special pricing -->
+      <div class="special-pricing">
+        <div class="special-card reveal reveal-delay-1">
+          <div class="icon-large">🎓</div>
+          <h3>Student Pricing</h3>
+          <p>Full access to all features at a discounted rate for students.</p>
+          <div class="student-plans">
+            <a href="https://opensempro.lemonsqueezy.com/checkout/buy/61218276-bc54-48c7-832c-1d264ee23a0a" class="student-plan">
+              <div class="student-plan-name">Monthly</div>
+              <div class="student-plan-price">$5</div>
+              <div class="student-plan-period">per month</div>
+            </a>
+            <a href="https://opensempro.lemonsqueezy.com/checkout/buy/4d2e0320-0701-431a-9ced-c580f8ffaac7" class="student-plan">
+              <div class="student-plan-name">Annual</div>
+              <div class="student-plan-price">$48</div>
+              <div class="student-plan-period">per year — Save 20%</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="special-card reveal reveal-delay-2">
+          <div class="icon-large">🏛️</div>
+          <h3>Institutions & Universities</h3>
+          <p>Equip your students and faculty with OpenSEM Pro at a discounted rate.</p>
+          <div class="inst-stats">
+            <div class="inst-stat">
+              <div class="inst-stat-value">10+</div>
+              <div class="inst-stat-label">Minimum Seats</div>
+            </div>
+            <div class="inst-stat">
+              <div class="inst-stat-value">80%</div>
+              <div class="inst-stat-label">Volume Discount</div>
+            </div>
+            <div class="inst-stat">
+              <div class="inst-stat-value">1 Key</div>
+              <div class="inst-stat-label">Per Student</div>
+            </div>
+          </div>
+          <a href="mailto:contact@opensempro.com?subject=Institutional%20License%20Inquiry&body=Institution%20Name:%0ANumber%20of%20Seats:%0AContact%20Person:%0A" class="btn btn-primary" style="width: 100%; justify-content:center;">Request a Quote</a>
+          <p style="color:var(--text-muted); font-size:12px; margin-top:12px;">Or email <a href="mailto:contact@opensempro.com">contact@opensempro.com</a></p>
+        </div>
+      </div>
     </div>
   </section>
+
+  <div class="section-divider"></div>
 
   <!-- DOWNLOAD -->
-  <section id="download" class="download-bg">
-    <div class="section-title">
-      <h2>Download OpenSEM Pro</h2>
-      <p>Try free for 3 days. No credit card required.</p>
-    </div>
-    <div class="download-grid">
-      <div class="download-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/500px-Apple_logo_grey.svg.png" alt="macOS" class="os-icon">
-        <h3>macOS</h3>
-        <p>Requires macOS 10.13 or later</p>
-        <a href="https://github.com/Bouzarab/Bouzarab.github.io/releases/download/v1.5.1/OpenSEM.Pro-1.5.1.dmg" class="btn btn-primary">Download for Mac</a>
+  <section id="download">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Get Started</div>
+        <h2>Download OpenSEM Pro</h2>
+        <p>Try free for 3 days. No credit card required.</p>
       </div>
-      <div class="download-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Windows_logo_-_2012.svg/250px-Windows_logo_-_2012.svg.png" alt="Windows" class="os-icon">
-        <h3>Windows</h3>
-        <p>Requires Windows 10 or later</p>
-        <a href="https://github.com/Bouzarab/Bouzarab.github.io/releases/download/v1.5.1/OpenSEM.Pro.Setup.1.5.1.exe" class="btn btn-primary">Download for Windows</a>
+
+      <div class="download-grid">
+        <div class="download-card reveal reveal-delay-1">
+          <div class="os-icon-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/500px-Apple_logo_grey.svg.png" alt="macOS">
+          </div>
+          <h3>macOS</h3>
+          <p class="dl-req">Requires macOS 10.13 or later</p>
+          <a href="https://github.com/Bouzarab/Bouzarab.github.io/releases/download/v1.5.1/OpenSEM.Pro-1.5.1.dmg" class="btn btn-primary" style="width:100%; justify-content:center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download for Mac
+          </a>
+        </div>
+
+        <div class="download-card reveal reveal-delay-2">
+          <div class="os-icon-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Windows_logo_-_2012.svg/250px-Windows_logo_-_2012.svg.png" alt="Windows">
+          </div>
+          <h3>Windows</h3>
+          <p class="dl-req">Requires Windows 10 or later</p>
+          <a href="https://github.com/Bouzarab/Bouzarab.github.io/releases/download/v1.5.1/OpenSEM.Pro.Setup.1.5.1.exe" class="btn btn-primary" style="width:100%; justify-content:center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download for Windows
+          </a>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner reveal">
+    <h2>Ready to Transform Your Research?</h2>
+    <p>Join thousands of researchers using OpenSEM Pro to save time and money.</p>
+    <a href="#download" class="btn btn-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Start Your Free Trial
+    </a>
+  </div>
+
+  <div class="section-divider"></div>
 
   <!-- FAQ -->
   <section id="faq">
-    <div class="section-title">
-      <h2>Frequently Asked Questions</h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <h4>Is there a free trial?</h4>
-        <p>Yes! OpenSEM Pro comes with a 3-day free trial with full access to all features. No credit card required.</p>
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">FAQ</div>
+        <h2>Frequently Asked Questions</h2>
       </div>
-      <div class="faq-item">
-        <h4>Can I use it on both Mac and Windows?</h4>
-        <p>Yes. Your license works on one machine at a time, and we provide native installers for both macOS and Windows.</p>
-      </div>
-      <div class="faq-item">
-        <h4>How does it compare to SmartPLS?</h4>
-        <p>OpenSEM Pro includes all the PLS-SEM and CB-SEM features you'd expect (bootstrap, IPMA, MGA, FIMIX, NCA, HTMT, and more), plus comprehensive statistical analysis tools (like SPSS), and qualitative textual analysis (like NVivo) — all in one tool at a fraction of the price.</p>
-      </div>
-      <div class="faq-item">
-        <h4>Do I need an internet connection?</h4>
-        <p>An internet connection is required for license activation and periodic verification. Once activated, the software works offline for your day-to-day analysis.</p>
-      </div>
-      <div class="faq-item">
-        <h4>Do you offer academic or institutional pricing?</h4>
-        <p>Yes! We offer volume licensing for universities and institutions. Contact us at contact@opensempro.com for a custom quote.</p>
+
+      <div class="faq-list">
+        <div class="faq-item reveal reveal-delay-1">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Is there a free trial?</h4>
+            <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! OpenSEM Pro comes with a 3-day free trial with full access to all features. No credit card required.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-2">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Can I use it on both Mac and Windows?</h4>
+            <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </div>
+          <div class="faq-answer">
+            <p>Yes. Your license works on one machine at a time, and we provide native installers for both macOS and Windows.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-3">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>How does it compare to SmartPLS?</h4>
+            <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </div>
+          <div class="faq-answer">
+            <p>OpenSEM Pro includes all the PLS-SEM and CB-SEM features you'd expect (bootstrap, IPMA, MGA, FIMIX, NCA, HTMT, and more), plus comprehensive statistical analysis tools (like SPSS), and qualitative textual analysis (like NVivo) — all in one tool at a fraction of the price.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-4">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Do I need an internet connection?</h4>
+            <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </div>
+          <div class="faq-answer">
+            <p>An internet connection is required for license activation and periodic verification. Once activated, the software works offline for your day-to-day analysis.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-4">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h4>Do you offer academic or institutional pricing?</h4>
+            <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! We offer volume licensing for universities and institutions. Contact us at contact@opensempro.com for a custom quote.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -622,9 +1958,15 @@
   <footer>
     <div class="footer-logo">
       <img src="logo.png" alt="OpenSEM Pro">
-      <span style="color:#ff4d6d; font-weight:700;">OpenSEM</span> <span style="color:#fff; font-weight:700;">Pro</span>
+      <span class="red">OpenSEM</span>
+      <span class="white">Pro</span>
     </div>
-    <p>&copy; 2026 OpenSEM Pro. All rights reserved. | <a href="/privacy.html" style="color:#888;text-decoration:none;">Privacy Policy</a> | <a href="/terms.html" style="color:#888;text-decoration:none;">Terms of Service</a> | <a href="mailto:contact@opensempro.com">Contact</a></p>
+    <p class="footer-text">&copy; 2026 OpenSEM Pro. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="mailto:contact@opensempro.com">Contact</a>
+    </div>
   </footer>
 
   <!-- LIGHTBOX -->
@@ -632,30 +1974,232 @@
     <img id="lightbox-img" src="" alt="">
   </div>
 
+  <!-- SCROLL TO TOP -->
+  <a href="#" class="scroll-top" id="scrollTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </a>
+
+  <!-- ============================================
+       JAVASCRIPT
+       ============================================ -->
   <script>
+    // ---- PARTICLE SYSTEM ----
+    (function() {
+      var canvas = document.getElementById('particles-canvas');
+      var ctx = canvas.getContext('2d');
+      var particles = [];
+      var particleCount = 60;
+      var mouse = { x: -1000, y: -1000 };
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      document.addEventListener('mousemove', function(e) {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+
+      function Particle() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.3;
+        this.vy = (Math.random() - 0.5) * 0.3;
+        this.radius = Math.random() * 1.5 + 0.5;
+        this.opacity = Math.random() * 0.3 + 0.1;
+      }
+
+      for (var i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (var i = 0; i < particles.length; i++) {
+          var p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0) p.x = canvas.width;
+          if (p.x > canvas.width) p.x = 0;
+          if (p.y < 0) p.y = canvas.height;
+          if (p.y > canvas.height) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255, 58, 92, ' + p.opacity + ')';
+          ctx.fill();
+
+          // Connection lines
+          for (var j = i + 1; j < particles.length; j++) {
+            var p2 = particles[j];
+            var dx = p.x - p2.x;
+            var dy = p.y - p2.y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 150) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = 'rgba(255, 58, 92, ' + (0.03 * (1 - dist / 150)) + ')';
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          }
+
+          // Mouse interaction
+          var mdx = p.x - mouse.x;
+          var mdy = p.y - mouse.y;
+          var mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+          if (mdist < 200) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = 'rgba(255, 58, 92, ' + (0.06 * (1 - mdist / 200)) + ')';
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+
+    // ---- CURSOR GLOW ----
+    (function() {
+      var glow = document.getElementById('cursorGlow');
+      if (window.matchMedia('(pointer: fine)').matches) {
+        document.addEventListener('mousemove', function(e) {
+          glow.style.left = e.clientX + 'px';
+          glow.style.top = e.clientY + 'px';
+        });
+      } else {
+        glow.style.display = 'none';
+      }
+    })();
+
+    // ---- NAV SCROLL EFFECT ----
+    (function() {
+      var nav = document.getElementById('mainNav');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      });
+    })();
+
+    // ---- MOBILE NAV ----
+    function toggleMobileNav() {
+      var nav = document.getElementById('mobileNav');
+      var btn = document.getElementById('mobileMenuBtn');
+      nav.classList.toggle('open');
+      btn.classList.toggle('active');
+      document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+    }
+    function closeMobileNav() {
+      document.getElementById('mobileNav').classList.remove('open');
+      document.getElementById('mobileMenuBtn').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // ---- SCROLL REVEAL ----
+    (function() {
+      var reveals = document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      reveals.forEach(function(el) { observer.observe(el); });
+    })();
+
+    // ---- ANIMATED COUNTERS ----
+    (function() {
+      var counters = document.querySelectorAll('.counter-number, .hero-stat-number');
+      var observed = new Set();
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !observed.has(entry.target)) {
+            observed.add(entry.target);
+            var el = entry.target;
+            var target = parseInt(el.getAttribute('data-count')) || 0;
+            var suffix = el.getAttribute('data-suffix') || '';
+            var current = 0;
+            var duration = 1500;
+            var start = performance.now();
+
+            function step(now) {
+              var progress = Math.min((now - start) / duration, 1);
+              var eased = 1 - Math.pow(1 - progress, 4); // ease out quart
+              current = Math.round(eased * target);
+              el.textContent = current + suffix;
+              if (progress < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      counters.forEach(function(el) { observer.observe(el); });
+    })();
+
+    // ---- LIGHTBOX ----
     function openLightbox(el) {
       document.getElementById('lightbox-img').src = el.src;
       document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
     }
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') moveCarousel(-1);
-      if (e.key === 'ArrowRight') moveCarousel(1);
-    });
 
+    // ---- FAQ TOGGLE ----
+    function toggleFaq(el) {
+      var item = el.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item.open').forEach(function(i) { i.classList.remove('open'); });
+      // Toggle clicked
+      if (!wasOpen) item.classList.add('open');
+    }
+
+    // ---- CAROUSEL ----
     var currentSlide = 0;
     var slides = document.querySelectorAll('.carousel-slide');
     var totalSlides = slides.length;
-
-     var carouselWrapper = document.querySelector('.carousel-wrapper');
+    var carouselWrapper = document.querySelector('.carousel-wrapper');
     var autoInterval = null;
     var mouseSpeed = 0;
     var touchStartX = 0;
     var touchDragging = false;
     var accumulator = 0;
+
+    // Build dots
+    (function() {
+      var dotsContainer = document.getElementById('carousel-dots');
+      for (var i = 0; i < totalSlides; i++) {
+        var dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('data-index', i);
+        dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        dot.onclick = function() {
+          currentSlide = parseInt(this.getAttribute('data-index'));
+          updateCarousel();
+        };
+        dotsContainer.appendChild(dot);
+      }
+    })();
 
     function updateCarousel() {
       var positions = ['far-left', 'left', 'active', 'right', 'far-right'];
@@ -666,6 +2210,11 @@
       }
       var caption = slides[currentSlide].getAttribute('data-caption');
       document.getElementById('carousel-caption').textContent = caption;
+
+      // Update dots
+      document.querySelectorAll('.carousel-dot').forEach(function(d, idx) {
+        d.classList.toggle('active', idx === currentSlide);
+      });
     }
 
     function moveCarousel(dir) {
@@ -675,19 +2224,15 @@
 
     updateCarousel();
 
-    // Desktop: mouse position controls direction and speed
+    // Desktop mouse-driven carousel
     carouselWrapper.addEventListener('mousemove', function(e) {
       var rect = carouselWrapper.getBoundingClientRect();
       var x = e.clientX - rect.left;
       var center = rect.width / 2;
       var deadZone = rect.width * 0.1;
       var offset = x - center;
-
-      if (Math.abs(offset) < deadZone) {
-        mouseSpeed = 0;
-      } else {
-        mouseSpeed = (offset - (offset > 0 ? deadZone : -deadZone)) / (center - deadZone);
-      }
+      if (Math.abs(offset) < deadZone) { mouseSpeed = 0; }
+      else { mouseSpeed = (offset - (offset > 0 ? deadZone : -deadZone)) / (center - deadZone); }
     });
 
     carouselWrapper.addEventListener('mouseenter', function() {
@@ -696,37 +2241,29 @@
       autoInterval = setInterval(function() {
         if (mouseSpeed === 0) return;
         accumulator += mouseSpeed * 0.15;
-        if (accumulator >= 1) {
-          moveCarousel(1);
-          accumulator = 0;
-        } else if (accumulator <= -1) {
-          moveCarousel(-1);
-          accumulator = 0;
-        }
+        if (accumulator >= 1) { moveCarousel(1); accumulator = 0; }
+        else if (accumulator <= -1) { moveCarousel(-1); accumulator = 0; }
       }, 50);
     });
 
     carouselWrapper.addEventListener('mouseleave', function() {
-      mouseSpeed = 0;
-      accumulator = 0;
+      mouseSpeed = 0; accumulator = 0;
       if (autoInterval) { clearInterval(autoInterval); autoInterval = null; }
       autoInterval = setInterval(function() { moveCarousel(1); }, 5000);
     });
 
-    // Touch: swipe left/right on mobile/tablet
+    // Touch support
     carouselWrapper.addEventListener('touchstart', function(e) {
-      touchStartX = e.touches[0].clientX;
-      touchDragging = true;
+      touchStartX = e.touches[0].clientX; touchDragging = true;
       if (autoInterval) { clearInterval(autoInterval); autoInterval = null; }
     }, { passive: true });
 
     carouselWrapper.addEventListener('touchmove', function(e) {
       if (!touchDragging) return;
-      var touchX = e.touches[0].clientX;
-      var diff = touchX - touchStartX;
+      var diff = e.touches[0].clientX - touchStartX;
       if (Math.abs(diff) > 50) {
         moveCarousel(diff > 0 ? -1 : 1);
-        touchStartX = touchX;
+        touchStartX = e.touches[0].clientX;
       }
     }, { passive: true });
 
@@ -735,17 +2272,48 @@
       autoInterval = setInterval(function() { moveCarousel(1); }, 5000);
     });
 
-    // Default auto-scroll
     autoInterval = setInterval(function() { moveCarousel(1); }, 5000);
-  </script>
 
-<a href="#" class="scroll-top" id="scrollTop" aria-label="Back to top">
-  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
-</a>
-<script>
-var scrollBtn=document.getElementById('scrollTop');
-window.addEventListener('scroll',function(){if(window.scrollY>400){scrollBtn.classList.add('visible')}else{scrollBtn.classList.remove('visible')}});
-scrollBtn.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'})});
-</script>
+    // Keyboard
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') moveCarousel(-1);
+      if (e.key === 'ArrowRight') moveCarousel(1);
+    });
+
+    // ---- SCROLL TO TOP ----
+    (function() {
+      var scrollBtn = document.getElementById('scrollTop');
+      window.addEventListener('scroll', function() {
+        scrollBtn.classList.toggle('visible', window.scrollY > 500);
+      });
+      scrollBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+
+    // ---- PILLAR MOUSE GLOW EFFECT ----
+    document.querySelectorAll('.pillar').forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        var rect = card.getBoundingClientRect();
+        var x = ((e.clientX - rect.left) / rect.width * 100);
+        var y = ((e.clientY - rect.top) / rect.height * 100);
+        card.style.setProperty('--mouse-x', x + '%');
+        card.style.setProperty('--mouse-y', y + '%');
+      });
+    });
+
+    // ---- SMOOTH ANCHOR SCROLL ----
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
