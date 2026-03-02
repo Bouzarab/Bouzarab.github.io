@@ -803,10 +803,10 @@
     }
 
     .comparison-wrap {
-      max-width: 960px;
+      max-width: 1200px;
       margin: 0 auto;
       border-radius: var(--radius-lg);
-      overflow: hidden;
+      overflow-x: auto;
       border: 1px solid var(--border);
       background: var(--bg-card);
     }
@@ -816,10 +816,15 @@
       border-collapse: collapse;
     }
     .comparison-table th, .comparison-table td {
-      padding: 16px 20px;
+      padding: 14px 12px;
       text-align: center;
-      font-size: 14px;
+      font-size: 13px;
       border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .comparison-table td:first-child {
+      white-space: normal;
+      min-width: 180px;
     }
     .comparison-table thead {
       background: rgba(255,255,255,0.02);
