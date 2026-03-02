@@ -1472,6 +1472,189 @@
     .hero-buttons { animation: fadeInUp 0.8s ease 0.3s forwards; opacity: 0; }
     .hero-stats { animation: fadeInUp 0.8s ease 0.5s forwards; opacity: 0; }
     .scroll-indicator { animation: fadeInUp 0.8s ease 0.7s forwards; opacity: 0; }
+        /* ============================================
+       FLOATING MAC WINDOW - VIDEO DEMO
+       ============================================ */
+    .video-demo-section {
+      padding: 40px 40px 120px;
+      position: relative;
+      z-index: 1;
+      background: var(--bg-secondary);
+      overflow: visible;
+    }
+
+    .floating-mac-window {
+      max-width: 900px;
+      margin: 0 auto;
+      animation: macFloat 8s ease-in-out infinite;
+      position: relative;
+    }
+
+    @keyframes macFloat {
+      0%, 100% {
+        transform: translateY(0px) rotateX(1deg) rotateY(-0.5deg);
+      }
+      25% {
+        transform: translateY(-12px) rotateX(0.5deg) rotateY(0.5deg);
+      }
+      50% {
+        transform: translateY(-6px) rotateX(-0.5deg) rotateY(0.8deg);
+      }
+      75% {
+        transform: translateY(-14px) rotateX(0.8deg) rotateY(-0.3deg);
+      }
+    }
+
+    .mac-window {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #1a1a2e;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.5),
+        0 10px 40px rgba(0, 0, 0, 0.3),
+        0 0 80px rgba(255, 58, 92, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      position: relative;
+    }
+
+    .mac-window::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: -1px; right: -1px; bottom: -1px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, rgba(255,58,92,0.15) 0%, transparent 40%, transparent 60%, rgba(102,126,234,0.1) 100%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Mac title bar */
+    .mac-titlebar {
+      height: 40px;
+      background: linear-gradient(180deg, #2a2a3e 0%, #1e1e32 100%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      position: relative;
+    }
+
+    .mac-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .mac-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      position: relative;
+    }
+    .mac-dot::after {
+      content: '';
+      position: absolute;
+      top: 2px; left: 2px;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+    }
+    .mac-dot.red { background: #ff5f57; }
+    .mac-dot.yellow { background: #ffbd2e; }
+    .mac-dot.green { background: #28c840; }
+
+    .mac-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: 500;
+    }
+
+    /* Video container */
+    .mac-video-container {
+      position: relative;
+      background: #000;
+      line-height: 0;
+    }
+
+    .mac-video-container video {
+      width: 100%;
+      display: block;
+      border-radius: 0 0 11px 11px;
+    }
+
+    /* Play button overlay */
+    .video-play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: all 0.4s ease;
+      z-index: 2;
+    }
+    .video-play-overlay:hover {
+      background: rgba(0, 0, 0, 0.15);
+    }
+    .video-play-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .play-btn-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(255, 58, 92, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px rgba(255, 58, 92, 0.4);
+      transition: all 0.4s ease;
+    }
+    .video-play-overlay:hover .play-btn-circle {
+      transform: scale(1.1);
+      box-shadow: 0 12px 48px rgba(255, 58, 92, 0.5);
+    }
+    .play-btn-circle svg {
+      width: 28px;
+      height: 28px;
+      fill: #fff;
+      margin-left: 3px;
+    }
+
+    /* Shadow/reflection below the mac window */
+    .mac-shadow {
+      max-width: 700px;
+      height: 40px;
+      margin: 0 auto;
+      background: radial-gradient(ellipse at center, rgba(255,58,92,0.08) 0%, transparent 70%);
+      margin-top: -10px;
+      filter: blur(20px);
+    }
+
+    .video-demo-label {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .video-demo-section { padding: 20px 20px 80px; }
+      .floating-mac-window { max-width: 100%; }
+      .mac-titlebar { height: 32px; padding: 0 12px; }
+      .mac-dot { width: 10px; height: 10px; }
+      .mac-dots { gap: 6px; }
+      .mac-title { font-size: 11px; }
+      .play-btn-circle { width: 56px; height: 56px; }
+      .play-btn-circle svg { width: 22px; height: 22px; }
+    }
+
   </style>
 </head>
 <body>
@@ -1687,6 +1870,35 @@
       <div class="carousel-dots" id="carousel-dots"></div>
     </div>
   </section>
+
+  <!-- FLOATING VIDEO DEMO -->
+  <div class="video-demo-section">
+    <div class="floating-mac-window reveal-scale">
+      <div class="mac-window">
+        <div class="mac-titlebar">
+          <div class="mac-dots">
+            <div class="mac-dot red"></div>
+            <div class="mac-dot yellow"></div>
+            <div class="mac-dot green"></div>
+          </div>
+          <div class="mac-title">OpenSEM Pro — Live Demo</div>
+        </div>
+        <div class="mac-video-container">
+          <video id="demoVideo" preload="metadata" playsinline muted loop>
+            <source src="OpenSEM.MP4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-play-overlay" id="videoPlayOverlay" onclick="playDemoVideo()">
+            <div class="play-btn-circle">
+              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mac-shadow"></div>
+      <div class="video-demo-label">Watch OpenSEM Pro in action — click to play</div>
+    </div>
+  </div>
 
   <div class="section-divider"></div>
 
@@ -2314,6 +2526,28 @@
         }
       });
     });
+        // ---- VIDEO DEMO PLAYER ----
+    function playDemoVideo() {
+      var video = document.getElementById('demoVideo');
+      var overlay = document.getElementById('videoPlayOverlay');
+      video.muted = false;
+      video.play();
+      overlay.classList.add('hidden');
+    }
+
+    // Pause/show overlay when video ends or is clicked
+    document.getElementById('demoVideo').addEventListener('click', function() {
+      var video = this;
+      var overlay = document.getElementById('videoPlayOverlay');
+      if (video.paused) {
+        video.play();
+        overlay.classList.add('hidden');
+      } else {
+        video.pause();
+        overlay.classList.remove('hidden');
+      }
+    });
+
   </script>
 </body>
 </html>
