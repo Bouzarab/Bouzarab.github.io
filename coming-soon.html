@@ -219,15 +219,45 @@
 
     <p>We're putting the finishing touches on our payment system. Leave your email and we'll notify you the moment it's live.</p>
 
-    <form class="notify-form" action="mailto:contact@opensempro.com" method="GET" enctype="text/plain">
-      <input type="email" name="subject" placeholder="Enter your email" required>
-      <button type="submit">Notify Me</button>
+    <form class="notify-form" id="notifyForm" onsubmit="submitNotify(event)">
+      <input type="email" id="notifyEmail" placeholder="Enter your email" required>
+      <button type="submit" id="notifyBtn">Notify Me</button>
     </form>
+    <div id="notifySuccess" style="display:none; color:#4ade80; font-size:15px; font-weight:600; margin-bottom:32px; padding:16px 24px; background:rgba(74,222,128,0.08); border:1px solid rgba(74,222,128,0.2); border-radius:12px;">
+      ✓ You're on the list! We'll notify you when we launch.
+    </div>
 
     <a href="/" class="back-link">
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
       Back to Homepage
     </a>
   </div>
+  <script>
+function submitNotify(e) {
+  e.preventDefault();
+  var email = document.getElementById('notifyEmail').value;
+  var btn = document.getElementById('notifyBtn');
+  var form = document.getElementById('notifyForm');
+  var success = document.getElementById('notifySuccess');
+
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  var formId = '1FAIpQLSfywVP5XnOYGq3jnh4O8XUCp4K13UT6696JoXzeOm0uMNVZWA';
+  var entryId = 'entry.461729822';
+  var url = 'https://docs.google.com/forms/d/e/' + formId + '/formResponse?' + entryId + '=' + encodeURIComponent(email);
+
+  fetch(url, {
+    method: 'POST',
+    mode: 'no-cors'
+  }).then(function() {
+    form.style.display = 'none';
+    success.style.display = 'block';
+  }).catch(function() {
+    form.style.display = 'none';
+    success.style.display = 'block';
+  });
+}
+</script>
 </body>
 </html>
