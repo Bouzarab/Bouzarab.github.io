@@ -1467,6 +1467,10 @@
     }
 
     /* Smooth text appearance */
+    @keyframes installFloat {
+      0%, 100% { transform: translateY(0px); box-shadow: 0 4px 24px rgba(0,0,0,0.15); }
+      50% { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(0,0,0,0.25); }
+    }
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -2263,10 +2267,10 @@
         </div>
       </div>
 
-      <div class="reveal" style="max-width:700px;margin:40px auto 0;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:32px 36px;">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+      <div class="reveal" style="max-width:700px;margin:40px auto 0;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:32px 36px;animation:installFloat 6s ease-in-out infinite;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px;">
           <span style="font-size:20px;">🔒</span>
-          <h3 style="font-size:16px;font-weight:700;color:#f0f0f5;margin:0;">First-time installation guide</h3>
+          <h3 style="font-size:18px;font-weight:800;color:#f0f0f5;margin:0;letter-spacing:-0.3px;">First-time installation guide</h3>
         </div>
         <p style="font-size:13px;color:#8a8fb5;margin-bottom:24px;line-height:1.6;">Because AnalyVa is an independent app not yet registered with Apple or Microsoft, your system may show a security warning. This is normal — follow the steps below to open it safely.</p>
         <div style="margin-bottom:24px;">
