@@ -1,0 +1,57 @@
+# Site
+title: AnalyVa
+tagline: PLS-SEM, Statistics & Textual Analysis Software
+description: >-
+  AnalyVa combines PLS-SEM, CB-SEM, SPSS-like statistics, and NVivo-like
+  textual analysis in one affordable desktop application. Benchmarked
+  against R 4.4.0 and SmartPLS 4.
+url: https://analyva.com
+baseurl: ""
+logo: /logo.png
+
+# Author
+author:
+  name: Abdelouahd Bouzar
+  email: support@analyva.com
+
+# Content
+markdown: kramdown
+highlighter: rouge
+permalink: /blog/:year/:month/:day/:title/
+
+# Layout defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Files/dirs Jekyll should ignore
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - .venv
+  - .gitignore
+  - coming-soon.html
+  - instructions.txt
+
+# GitHub-Pages-allowlisted plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+
+# Kit (ConvertKit) newsletter — replace both once you create the account and form
+# https://app.kit.com/  →  Grow → Landing Pages & Forms → New Form → Embed → HTML
+kit:
+  form_id: "9723181"
+  form_uid: "eb3585c848"

@@ -1,0 +1,54 @@
+{% comment %}
+============================================================
+NEWSLETTER SIGNUP — Kit (ConvertKit) embed
+------------------------------------------------------------
+Sends the PLS-SEM Reporting Checklist PDF automatically
+once the subscriber confirms their email address.
+
+SETUP (one time, ~10 minutes):
+  1. Sign up at https://app.kit.com/  (free up to 10k subs)
+  2. Grow → Landing Pages & Forms → New Form → "Inline"
+  3. Design → set the incentive email to attach the PDF at
+     /assets/downloads/analyva-pls-sem-reporting-checklist.pdf
+     (upload it in Kit's asset library first)
+  4. Publish → Embed → HTML tab
+  5. From the embed code, copy:
+       data-uid="XXXXXX..."     -> paste as form_uid in _config.yml
+       action="https://app.kit.com/forms/YYYYYY/subscriptions"
+                                  -> the YYYYYY part is form_id
+  6. Push to git; the form is now live everywhere this include
+     appears (/validation, /blog, /cite, and footer of new pages).
+============================================================
+{% endcomment %}
+
+{% assign heading = include.heading | default: "Get the free PLS-SEM Reporting Checklist" %}
+{% assign body = include.body | default: "One-page reference mapping every required PLS-SEM output — loadings, AVE, HTMT, VIF, R², Q², f² — to Hair et al. reporting standards. Plus a short weekly-ish newsletter on SEM, statistics, and computational qualitative analysis." %}
+
+<div class="newsletter-block">
+  <h3>{{ heading }}</h3>
+  <p>{{ body }}</p>
+
+  <form action="https://app.kit.com/forms/{{ site.kit.form_id }}/subscriptions"
+        class="seva-form formkit-form signup-form"
+        method="post"
+        data-sv-form="{{ site.kit.form_id }}"
+        data-uid="{{ site.kit.form_uid }}"
+        data-format="inline"
+        data-version="5"
+        target="_blank"
+        min-width="400 500 600 700 800">
+    <input type="email"
+           name="email_address"
+           aria-label="Your email address"
+           placeholder="you@university.edu"
+           required>
+    <button type="submit" class="btn btn-primary">
+      Send me the checklist
+    </button>
+  </form>
+
+  <p class="privacy-note">One email at a time. Unsubscribe in one click. No spam, ever.</p>
+</div>
+
+<!-- Kit's own script (safe to include on every page; loads once) -->
+<script src="https://f.convertkit.com/ckjs/ck.5.js" async></script>

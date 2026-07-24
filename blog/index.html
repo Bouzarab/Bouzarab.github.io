@@ -1,0 +1,45 @@
+---
+layout: default
+permalink: /blog/
+title: The AnalyVa Blog
+description: >-
+  Practical posts on PLS-SEM, CB-SEM, statistics, and computational
+  qualitative analysis. Written for researchers who use SmartPLS, SPSS,
+  or NVivo today.
+---
+
+<div class="page-header">
+  <div class="eyebrow">Blog</div>
+  <h1>Practical posts for applied researchers</h1>
+  <p class="subtitle">
+    PLS-SEM, CB-SEM, statistics, and computational qualitative analysis —
+    written to answer the questions people actually search for.
+    Two posts a week when things are going well; slower when they're not.
+  </p>
+</div>
+
+<div class="card-grid">
+  {% for post in site.posts %}
+    <article class="card">
+      <div class="meta">
+        {{ post.date | date: "%b %-d, %Y" }}
+        {% if post.category %} &nbsp;·&nbsp; {{ post.category }}{% endif %}
+        {% if post.read_time %} &nbsp;·&nbsp; {{ post.read_time }} min read{% endif %}
+      </div>
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      {% if post.subtitle %}
+        <p>{{ post.subtitle }}</p>
+      {% elsif post.excerpt %}
+        <p>{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
+      {% endif %}
+      <div class="card-actions">
+        <a href="{{ post.url | relative_url }}" class="btn btn-secondary btn-sm">Read →</a>
+        {% if post.tier %}<span class="badge">{{ post.tier }}</span>{% endif %}
+      </div>
+    </article>
+  {% endfor %}
+</div>
+
+{% include newsletter.html
+   heading="Get one post like these a week"
+   body="Plus the free PLS-SEM Reporting Checklist as a welcome gift. Unsubscribe in one click." %}

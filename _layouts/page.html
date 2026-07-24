@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<div class="page-header">
+  {% if page.eyebrow %}<div class="eyebrow">{{ page.eyebrow }}</div>{% endif %}
+  <h1>{{ page.title }}</h1>
+  {% if page.subtitle %}<p class="subtitle">{{ page.subtitle }}</p>{% endif %}
+</div>
+
+{% if page.body_class == "cards" %}
+  <div class="card-grid">
+    {{ content }}
+  </div>
+{% else %}
+  <article class="prose">
+    {{ content }}
+  </article>
+{% endif %}
+
+{% if page.newsletter != false %}
+  {% include newsletter.html %}
+{% endif %}

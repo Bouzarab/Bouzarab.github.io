@@ -1,1 +1,14 @@
 AnalyVa.MP4
+
+# Jekyll build output — should not be committed
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Bundler
+Gemfile.lock
+.bundle/
+vendor/
+
+# System
+.DS_Store

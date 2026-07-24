@@ -1,0 +1,33 @@
+<footer class="site-footer">
+  <div class="footer-logo">
+    <img src="{{ '/logo.png' | relative_url }}" alt="AnalyVa">
+    <span><span class="red">Analy</span><span class="white">Va</span></span>
+  </div>
+  <p class="footer-text">&copy; {{ site.time | date: '%Y' }} AnalyVa. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <a href="{{ '/validation/' | relative_url }}">Validation</a>
+    <a href="{{ '/blog/' | relative_url }}">Blog</a>
+    <a href="{{ '/cite/' | relative_url }}">Cite</a>
+    <a href="{{ '/privacy.html' | relative_url }}">Privacy</a>
+    <a href="{{ '/terms.html' | relative_url }}">Terms</a>
+    <a href="mailto:support@analyva.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const siteNav = document.getElementById('siteNav');
+  if (siteNav) {
+    window.addEventListener('scroll', () => {
+      siteNav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+  }
+  // Mobile menu
+  const btn = document.getElementById('mobileMenuBtn');
+  const mnav = document.getElementById('mobileNav');
+  if (btn && mnav) {
+    btn.addEventListener('click', () => mnav.classList.toggle('open'));
+    mnav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mnav.classList.remove('open')));
+  }
+</script>
