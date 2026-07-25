@@ -45,8 +45,10 @@ exclude:
   - instructions.txt
 
 # GitHub-Pages-allowlisted plugins
+# jekyll-sitemap intentionally omitted — we serve a hand-maintained sitemap.xml
+# so that the file's Content-Type is always application/xml and never collides
+# with the plugin-generated one.
 plugins:
-  - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-feed
 
