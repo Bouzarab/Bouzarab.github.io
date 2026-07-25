@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="HTMT">
+  <rect width="800" height="600" fill="#5a1520"/>
+  <text x="400" y="320"
+        font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-size="180" font-weight="700"
+        text-anchor="middle" letter-spacing="-6"
+        dominant-baseline="middle">
+    <tspan fill="#f5c04a">H</tspan><tspan fill="#ffffff">TMT</tspan>
+  </text>
+</svg>
