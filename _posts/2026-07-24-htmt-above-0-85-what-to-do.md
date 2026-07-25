@@ -1,5 +1,6 @@
 ---
 title: "HTMT Above 0.85: What to Do When Discriminant Validity Fails"
+description: "HTMT crossed 0.85 in your PLS-SEM report? A step-by-step decision path: check the bootstrap CI, inspect indicator pairs, and defend or reshape the model."
 subtitle: >-
   Your PLS-SEM report is due, HTMT crossed the threshold, and you're
   wondering whether to defend it or reshape the model. Here's a decision

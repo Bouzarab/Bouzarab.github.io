@@ -637,6 +637,76 @@ main.site-main { position: relative; z-index: 1; padding-top: 72px; }
   .gallery-card.size-small { grid-column: span 1; grid-row: span 1; }
 }
 
+/* ============================================
+   RELATED POSTS BLOCK (bottom of post pages)
+   ============================================ */
+.related-posts {
+  max-width: 900px;
+  margin: 48px auto 24px;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+}
+.related-posts h3 {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+.related-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.related-item {
+  display: block;
+  padding: 20px 22px;
+  border-radius: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+}
+.related-item:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  border-left-color: var(--accent);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.related-item .related-meta {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.related-item .related-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.35;
+  letter-spacing: -0.2px;
+}
+/* Accent stripes per post color */
+.related-item.accent-red    { border-left-color: #ff3a5c; }
+.related-item.accent-teal   { border-left-color: #14b8a6; }
+.related-item.accent-purple { border-left-color: #a855f7; }
+.related-item.accent-amber  { border-left-color: #f59e0b; }
+.related-item.accent-green  { border-left-color: #22c55e; }
+.related-item.accent-blue   { border-left-color: #3b82f6; }
+.related-item.accent-pink   { border-left-color: #ec4899; }
+@media (max-width: 768px) {
+  .related-list { grid-template-columns: 1fr; }
+  .related-posts { padding: 0 20px; margin: 32px auto 16px; }
+}
+
 /* NEWSLETTER BLOCK */
 .newsletter-block {
   max-width: 720px;

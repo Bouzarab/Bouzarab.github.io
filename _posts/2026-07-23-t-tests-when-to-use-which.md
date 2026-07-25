@@ -1,5 +1,6 @@
 ---
 title: "T-Tests: When to Use Which"
+description: "One-sample, independent, or paired t-test — which do you need? The decision framework, the assumptions to check first, and the three mistakes to avoid."
 subtitle: >-
   The t-test is the workhorse of comparing means — but "the t-test" is
   really three related tests, and picking the wrong one is one of the

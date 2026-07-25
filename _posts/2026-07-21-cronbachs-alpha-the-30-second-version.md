@@ -1,5 +1,6 @@
 ---
 title: "Cronbach's Alpha: The 30-Second Version + Common Mistakes"
+description: "Cronbach's alpha explained in 30 seconds. What it measures, the accepted thresholds, and the three common mistakes that keep sneaking through peer review."
 subtitle: >-
   If your paper uses a multi-item scale, you have probably reported α.
   And your reviewer has probably asked whether it is above 0.70.

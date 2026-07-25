@@ -1,5 +1,6 @@
 ---
 title: "Pearson's r: The Right Way to Read a Correlation"
+description: "How to read Pearson's correlation coefficient responsibly. What r actually measures, Cohen's benchmarks, and four things r does not tell you (including causation)."
 subtitle: >-
   It is bounded between -1 and +1, everyone reports it, and almost
   nobody interprets it responsibly. Here is what r actually measures

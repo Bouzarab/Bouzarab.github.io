@@ -1,5 +1,6 @@
 ---
 title: "P-values: What They Actually Mean (and Don't)"
+description: "What does a p-value actually mean? The formal definition in plain language, the five misinterpretations that appear in peer-reviewed papers, and what to report alongside it."
 subtitle: >-
   Every published paper reports them. Few readers know what they
   actually say. Here is the 3-minute version — plus the five
