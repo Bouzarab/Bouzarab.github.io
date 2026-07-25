@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Qualitative coding on text">
+  <rect width="800" height="600" fill="#efe6d0"/>
+  <g stroke="#1a1a1a" stroke-width="14" stroke-linecap="round" opacity="0.9">
+    <line x1="120" y1="150" x2="680" y2="150"/>
+    <line x1="120" y1="210" x2="620" y2="210"/>
+    <line x1="120" y1="270" x2="680" y2="270"/>
+    <line x1="120" y1="330" x2="560" y2="330"/>
+    <line x1="120" y1="390" x2="680" y2="390"/>
+    <line x1="120" y1="450" x2="640" y2="450"/>
+  </g>
+  <rect x="150" y="135"  width="240" height="30" fill="#d62828" opacity="0.85"/>
+  <rect x="410" y="195"  width="180" height="30" fill="#1a1a1a" opacity="0.75"/>
+  <rect x="150" y="315"  width="300" height="30" fill="#d62828" opacity="0.85"/>
+  <rect x="380" y="435"  width="220" height="30" fill="#1a1a1a" opacity="0.75"/>
+  <g transform="translate(560 490)">
+    <rect x="0" y="0" width="120" height="40" rx="20" fill="#d62828"/>
+    <text x="60" y="26" font-family="'Inter',sans-serif" font-size="14" font-weight="700" text-anchor="middle" fill="#efe6d0" letter-spacing="2">CODE 1</text>
+  </g>
+</svg>

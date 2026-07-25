@@ -1,0 +1,51 @@
+name: Daily site rebuild (publishes future-dated posts)
+
+# Rebuilds the site every day so posts with dates in the future
+# publish automatically when their date arrives.
+#
+# GitHub Pages usually only rebuilds on push. This workflow adds a
+# scheduled "no-op" push (via workflow_dispatch → repository_dispatch
+# → GitHub Pages build) so scheduled posts don't require you to push
+# manually on their target date.
+
+on:
+  schedule:
+    # Every day at 06:00 UTC (~07:00 Casablanca in summer). Cron syntax.
+    - cron: "0 6 * * *"
+  # Allows manual triggering from the Actions tab
+  workflow_dispatch:
+
+# Minimum permissions to write a commit + trigger a Pages build
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure git identity
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Touch a build marker so Pages sees a change
+        run: |
+          echo "Last rebuild: $(date -u +%Y-%m-%dT%H:%M:%SZ)" > .last-build
+
+      - name: Commit and push if the marker changed
+        run: |
+          if [ -n "$(git status --porcelain .last-build)" ]; then
+            git add .last-build
+            git commit -m "chore: daily rebuild (publish scheduled posts)"
+            git push
+          else
+            echo "No changes to commit."
+          fi

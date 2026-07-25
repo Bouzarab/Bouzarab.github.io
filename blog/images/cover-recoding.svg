@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Recode and reverse variables">
+  <rect width="800" height="600" fill="#efe6d0"/>
+  <g font-family="Georgia, serif" font-size="52" font-weight="700" text-anchor="middle" fill="#1a1a1a">
+    <text x="220" y="150">1</text>
+    <text x="220" y="230">2</text>
+    <text x="220" y="310">3</text>
+    <text x="220" y="390">4</text>
+    <text x="220" y="470">5</text>
+    <text x="580" y="150" fill="#d62828">5</text>
+    <text x="580" y="230" fill="#d62828">4</text>
+    <text x="580" y="310" fill="#d62828">3</text>
+    <text x="580" y="390" fill="#d62828">2</text>
+    <text x="580" y="470" fill="#d62828">1</text>
+  </g>
+  <g stroke="#1a1a1a" stroke-width="4" fill="none" opacity="0.7">
+    <line x1="270" y1="135" x2="530" y2="455"/>
+    <line x1="270" y1="215" x2="530" y2="375"/>
+    <line x1="270" y1="295" x2="530" y2="295"/>
+    <line x1="270" y1="375" x2="530" y2="215"/>
+    <line x1="270" y1="455" x2="530" y2="135"/>
+  </g>
+  <g stroke="#d62828" stroke-width="6" fill="none">
+    <line x1="380" y1="80"  x2="420" y2="80"/>
+    <line x1="380" y1="520" x2="420" y2="520"/>
+  </g>
+</svg>
