@@ -91,20 +91,78 @@ For a modern applied paper:
 
 ## Doing this in AnalyVa
 
-*A step-by-step tutorial with screenshots will be added here.*
+A full workflow, from a fresh canvas to a saved Excel report.
 
-> **Screenshot placeholder — Step 1: Import your data.**
-> Suggested filename: `analyva-alpha-01-import.png`.
+**Step 1 — Open AnalyVa.**
+Launch the app. You start on an empty canvas, ready to receive data.
 
-> **Screenshot placeholder — Step 2: Select the scale items.**
-> Suggested filename: `analyva-alpha-02-select-items.png`.
+![AnalyVa opens with an empty canvas](/blog/images/analyva-alpha-01-open.png)
 
-> **Screenshot placeholder — Step 3: Run reliability analysis.**
-> Suggested filename: `analyva-alpha-03-run.png`.
+**Step 2 — Click *Import*.**
+Top toolbar, second button from the left. This opens the data-import
+dialog.
 
-> **Screenshot placeholder — Step 4: Read the α, ρ_A, ρ_C, and
-> item-total statistics.**
-> Suggested filename: `analyva-alpha-04-results.png`.
+![The Import button in the top toolbar](/blog/images/analyva-alpha-02-import-button.png)
+
+**Step 3 — Drop your data file.**
+Drag an `.xlsx`, `.csv`, or `.tsv` file onto the drop zone (or click to
+browse). AnalyVa parses the file, shows you the first few rows for
+sanity-checking, and reports the shape (here: 543 rows × 85 columns,
+all numeric, no missing values). Click **Import** to load it in.
+
+![The Import Tabular Data dialog with a preview of the file](/blog/images/analyva-alpha-03-import-dialog.png)
+
+**Step 4 — Open *Analyze → Scale → Reliability Analysis*.**
+Every variable in your dataset now appears in the left sidebar. Open
+the **Analyze** menu in the top toolbar → **Scale** → **Reliability
+Analysis**.
+
+![The Analyze menu with Scale → Reliability Analysis highlighted](/blog/images/analyva-alpha-04-analyze-menu.png)
+
+**Step 5 — The item picker opens.**
+A dialog appears asking you to select the items that make up your
+scale. All four reporting extras (item-total statistics, split-half
+reliability, McDonald's ω, inter-item correlation matrix) are enabled
+by default — leave them all checked.
+
+![The Reliability Analysis dialog, ready for item selection](/blog/images/analyva-alpha-05-item-picker.png)
+
+**Step 6 — Click the first item in your scale.**
+The item you click is highlighted. This example uses the `RS` scale
+(items `RS1` through `RS9` — a 9-item risk-perception scale).
+
+![First scale item selected in the picker](/blog/images/analyva-alpha-06-first-selected.png)
+
+**Step 7 — Ctrl/Cmd-click through the remaining items, then *Run*.**
+Hold **Ctrl** (Windows) or **Cmd** (Mac) and click each additional
+scale item. Or click the first and Shift-click the last to select the
+whole range. Once all 9 items are highlighted, click the red **Run**
+button at the bottom-left of the dialog.
+
+![All 9 scale items selected with the Run button highlighted](/blog/images/analyva-alpha-07-all-selected-run.png)
+
+**Step 8 — Read the results panel.**
+The right pane switches to **Results**. Cronbach's α, its 95%
+confidence interval, standardised α, Guttman's λ6, McDonald's ω, and
+the mean inter-item correlation all appear in one Scale Reliability
+table — each labelled with its threshold and a colour-coded status
+(*Excellent* / *OK* / *High*). Below it, the Split-Half Reliability
+table (Spearman-Brown, Guttman split-half) and the Item-Total
+Statistics table with the *"α if item deleted"* column and a
+**Keep / Drop** recommendation for each item.
+
+In this example: α = **0.9291** (95% CI [0.9197, 0.9377]),
+McDonald's ω = **0.9417** — both well above 0.70 → *Excellent*.
+
+![Reliability Analysis results panel with α, ω, split-half, and item-total tables](/blog/images/analyva-alpha-08-results.png)
+
+**Step 9 — Export the report.**
+Every table has its own **Copy**, **APA**, **HTML**, and **CSV** button
+above it. Or click **Export Excel** in the top toolbar to save the
+entire Results panel as a single `.xlsx` file — one sheet per table,
+formatted and ready to drop into a manuscript appendix.
+
+![The Export Excel button in the top toolbar](/blog/images/analyva-alpha-09-export.png)
 
 ## Further reading
 
