@@ -1,17 +1,16 @@
 {% comment %}
 ============================================================
-NEWSLETTER SIGNUP — Kit (ConvertKit) with ad-blocker fallback
+NEWSLETTER SIGNUP — Brevo with ad-blocker fallback
 ------------------------------------------------------------
-Uses a plain HTML form (no Kit tracker JS) so ad-blockers don't
-break it. The form is progressively enhanced with fetch() so
-subscribers stay on analyva.com when it succeeds. If fetch is
-blocked, the form falls back to a native POST that opens Kit's
-own confirmation page in a new tab.
+Plain HTML form (no Brevo tracker JS) so ad-blockers don't
+break signup. Progressively enhanced with fetch(mode:no-cors)
+so subscribers stay on analyva.com when it succeeds. If fetch
+is blocked, falls back to native POST that opens Brevo's own
+"check your email" page in a new tab.
 
-Kit form + form_uid live in _config.yml:
-  kit:
-    form_id: "9723181"
-    form_uid: "eb3585c848"
+Brevo form action URL is in _config.yml → brevo.form_action.
+To swap in a new form: create a new Brevo form, copy the
+<form action="..."> URL from the embed HTML, paste into config.
 ============================================================
 {% endcomment %}
 
@@ -22,16 +21,31 @@ Kit form + form_uid live in _config.yml:
   <h3>{{ heading }}</h3>
   <p>{{ body }}</p>
 
-  <form action="https://app.kit.com/forms/{{ site.kit.form_id }}/subscriptions"
-        method="post"
-        class="signup-form kit-signup"
+  <form action="{{ site.brevo.form_action }}"
+        method="POST"
+        class="signup-form brevo-signup"
+        data-type="subscription"
         target="_blank">
     <input type="email"
-           name="email_address"
+           name="EMAIL"
            aria-label="Your email address"
            placeholder="you@university.edu"
            autocomplete="email"
            required>
+
+    {% comment %}
+      Brevo honeypot: real users leave this blank because it's hidden;
+      bots fill every input and get rejected. Must be present + empty.
+    {% endcomment %}
+    <input type="text" name="email_address_check" value=""
+           class="input--hidden"
+           style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;"
+           tabindex="-1"
+           autocomplete="off"
+           aria-hidden="true">
+
+    <input type="hidden" name="locale" value="en">
+
     <button type="submit" class="btn btn-primary">
       Send me the checklist
     </button>
@@ -45,7 +59,7 @@ Kit form + form_uid live in _config.yml:
 <script>
 (function () {
   document.querySelectorAll('.newsletter-block').forEach(function (block) {
-    var form = block.querySelector('.kit-signup');
+    var form = block.querySelector('.brevo-signup');
     if (!form || form.dataset.hooked) return;
     form.dataset.hooked = '1';
 
@@ -60,27 +74,31 @@ Kit form + form_uid live in _config.yml:
 
       var fd = new FormData(form);
 
+      // Brevo's sibforms endpoint does not send permissive CORS headers,
+      // so we POST in no-cors mode. The request goes through but the
+      // response is opaque. That's fine — we assume success and show
+      // our own inline confirmation. Real errors are rare (Brevo only
+      // rejects malformed emails, which HTML5 validation catches first).
       fetch(form.action, {
         method: 'POST',
         body: fd,
-        mode: 'cors',
-        headers: { 'Accept': 'application/json' }
+        mode: 'no-cors'
       })
-      .then(function (res) {
-        if (!res.ok) throw new Error('kit-not-ok');
+      .then(function () {
         form.style.display = 'none';
         success.hidden = false;
         success.innerHTML =
           '<strong>Almost there.</strong> Check your inbox for a confirmation email — ' +
-          'click the button inside and the PLS-SEM Checklist download will open automatically.';
+          'click the button inside and the PLS-SEM Checklist download will open automatically. ' +
+          '<br><span style="display:block;margin-top:6px;font-size:13px;color:var(--text-muted);">' +
+          'If you don\'t see it in 2 minutes, check your Spam folder.</span>';
         success.style.cssText =
           'color:var(--text-primary);font-size:15px;padding:16px 20px;' +
           'background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.25);' +
           'border-radius:12px;margin-top:8px;text-align:left;';
       })
       .catch(function () {
-        // fetch was blocked or Kit refused — fall back to native form POST
-        // (opens Kit's own "check your email" page in a new tab).
+        // fetch was blocked — fall back to native form POST in a new tab.
         form.removeEventListener('submit', onSubmit);
         btn.textContent = originalBtn;
         btn.disabled = false;

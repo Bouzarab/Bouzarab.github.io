@@ -50,8 +50,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-feed
 
-# Kit (ConvertKit) newsletter — replace both once you create the account and form
-# https://app.kit.com/  →  Grow → Landing Pages & Forms → New Form → Embed → HTML
-kit:
-  form_id: "9723181"
-  form_uid: "eb3585c848"
+# Brevo newsletter — form action URL from Brevo's embed HTML.
+# To swap in a new form later, replace brevo.form_action below.
+brevo:
+  form_action: "https://1eadd8df.sibforms.com/serve/MUIFAKD4RtAnxHv94EHOziRrN47OJ6-xfrFv9nJQ6TSaPyI1uEtt3nPT-EH0PYhHmjk77ySZE_KvkF4SQdNHKNgROtiiTcvpZvcbmpj8-kB4kVpKbRDCixwWMP-zS3AxLrwa510m1weceu_t0ZThq3b3qq7ZZ-Rq7MqgM7FQVIUkY2hXAPq4DLeD20XcFWTJITd4TrnKic4I34SZRA=="
