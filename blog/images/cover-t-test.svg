@@ -1,9 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="T-test">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="T-test">
   <rect width="800" height="600" fill="#3d1d70"/>
-  <text x="400" y="290"
+  <text x="400" y="320"
         font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         font-size="150" font-weight="700"
-        text-anchor="middle" letter-spacing="-4">
+        text-anchor="middle" letter-spacing="-4"
+        dominant-baseline="middle">
     <tspan fill="#f5c04a">t</tspan><tspan fill="#ffffff">-test</tspan>
   </text>
 </svg>

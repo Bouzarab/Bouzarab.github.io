@@ -458,7 +458,7 @@ main.site-main { position: relative; z-index: 1; padding-top: 72px; }
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 220px;
+  grid-auto-rows: 280px;
   grid-auto-flow: dense;
   gap: 20px;
   max-width: 1200px;
@@ -480,7 +480,9 @@ main.site-main { position: relative; z-index: 1; padding-top: 72px; }
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   will-change: transform;
   color: #fff;
-  min-height: 220px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
 }
 
 .gallery-card:hover {
@@ -495,47 +497,33 @@ main.site-main { position: relative; z-index: 1; padding-top: 72px; }
 .gallery-card.size-tall   { grid-column: span 1; grid-row: span 2; }
 .gallery-card.size-large  { grid-column: span 2; grid-row: span 2; }
 
-/* Background image layer */
+/* Image zone (top of card) — takes remaining vertical space */
 .gallery-card .card-image {
-  position: absolute;
-  inset: 0;
+  flex: 1;
+  min-height: 100px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow: hidden;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .gallery-card:hover .card-image {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 /* Fallback: no image → solid accent color + dot pattern */
 .gallery-card .card-fallback {
-  position: absolute;
-  inset: 0;
+  flex: 1;
+  min-height: 100px;
   background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1.5px, transparent 1.5px);
   background-size: 22px 22px;
 }
 
-/* Dark gradient overlay so text stays readable */
-.gallery-card .card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg,
-    rgba(0,0,0,0) 0%,
-    rgba(0,0,0,0) 40%,
-    rgba(0,0,0,0.55) 85%,
-    rgba(0,0,0,0.75) 100%);
-  pointer-events: none;
-}
-
-/* Text content — bottom-left */
+/* Solid text panel (bottom of card) — sits below the image, never overlaps */
 .gallery-card .card-body {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 24px 24px 22px;
-  z-index: 2;
+  padding: 18px 22px 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  background: #0d1230;   /* default; overridden per-accent below */
 }
 
 .gallery-card .card-tags {
@@ -579,28 +567,41 @@ main.site-main { position: relative; z-index: 1; padding-top: 72px; }
 }
 
 /* Per-post accent palette
-   Applied to: fallback background, tag pills.
+   Applied to: fallback bg (dot pattern), tag pills, AND card body panel.
    Choose via post front matter: color: red | teal | purple | amber | green | blue | pink */
 .gallery-card.accent-red    .card-fallback { background-color: #ff3a5c; }
 .gallery-card.accent-red    .card-tag       { background-color: #cc2848; }
+.gallery-card.accent-red    .card-body      { background-color: #1f0810; }
+
 .gallery-card.accent-teal   .card-fallback { background-color: #14b8a6; }
 .gallery-card.accent-teal   .card-tag       { background-color: #0f7a70; }
+.gallery-card.accent-teal   .card-body      { background-color: #082623; }
+
 .gallery-card.accent-purple .card-fallback { background-color: #a855f7; }
 .gallery-card.accent-purple .card-tag       { background-color: #7c34c4; }
+.gallery-card.accent-purple .card-body      { background-color: #1c0e3d; }
+
 .gallery-card.accent-amber  .card-fallback { background-color: #f59e0b; }
 .gallery-card.accent-amber  .card-tag       { background-color: #b8710a; }
+.gallery-card.accent-amber  .card-body      { background-color: #291a05; }
+
 .gallery-card.accent-green  .card-fallback { background-color: #22c55e; }
 .gallery-card.accent-green  .card-tag       { background-color: #158a3f; }
+.gallery-card.accent-green  .card-body      { background-color: #0a2416; }
+
 .gallery-card.accent-blue   .card-fallback { background-color: #3b82f6; }
 .gallery-card.accent-blue   .card-tag       { background-color: #2058bb; }
+.gallery-card.accent-blue   .card-body      { background-color: #0c1a34; }
+
 .gallery-card.accent-pink   .card-fallback { background-color: #ec4899; }
 .gallery-card.accent-pink   .card-tag       { background-color: #b52c74; }
+.gallery-card.accent-pink   .card-body      { background-color: #290b1a; }
 
 /* Mobile — collapse to single column, no parallax */
 @media (max-width: 768px) {
   .gallery-grid {
     grid-template-columns: 1fr;
-    grid-auto-rows: 200px;
+    grid-auto-rows: 260px;
     padding: 0 20px 64px;
   }
   .gallery-card.size-small,
