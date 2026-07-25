@@ -12,7 +12,7 @@ read_time: 6
 tags: [statistics, reliability, cronbach alpha]
 color: blue
 size: small
-image: /blog/images/cover-alpha.svg
+image: /blog/images/cover-alpha.jpg
 ---
 
 If your paper uses a multi-item scale — a five-question survey, a set

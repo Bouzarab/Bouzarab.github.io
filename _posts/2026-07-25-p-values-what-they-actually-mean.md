@@ -11,7 +11,7 @@ read_time: 7
 tags: [statistics, p-value, hypothesis testing]
 color: teal
 size: wide
-image: /blog/images/cover-p-value.svg
+image: /blog/images/cover-p-value.jpg
 ---
 
 If you have read a paper in the last twenty years, you have read a

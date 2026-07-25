@@ -12,7 +12,7 @@ doi: 10.5281/zenodo.21536948
 tags: [PLS-SEM, HTMT, discriminant validity]
 color: red
 size: large
-image: /blog/images/cover-htmt.svg
+image: /blog/images/cover-htmt.jpg
 ---
 
 You ran PLS-SEM, opened the report, and one HTMT value is 0.87. The

@@ -11,7 +11,7 @@ read_time: 6
 tags: [statistics, correlation, pearson]
 color: green
 size: small
-image: /blog/images/cover-pearson-r.svg
+image: /blog/images/cover-pearson-r.jpg
 ---
 
 If two variables move together, we say they are correlated. If they

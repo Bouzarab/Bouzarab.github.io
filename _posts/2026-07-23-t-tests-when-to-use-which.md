@@ -12,7 +12,7 @@ read_time: 8
 tags: [statistics, t-test, hypothesis testing]
 color: purple
 size: wide
-image: /blog/images/cover-t-test.svg
+image: /blog/images/cover-t-test.jpg
 ---
 
 The t-test is the workhorse of comparing means. But "the t-test" is
