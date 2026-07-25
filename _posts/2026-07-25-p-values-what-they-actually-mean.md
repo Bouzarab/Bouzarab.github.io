@@ -98,14 +98,79 @@ report includes:
 ## Doing this in AnalyVa
 
 Every inferential test in AnalyVa reports the exact p-value alongside
-the effect size and — where relevant — a bootstrap confidence interval.
-Multiple-comparison corrections (Bonferroni, Holm, Tukey) are one click
-away in the same output panel, so nothing about a p-value gets reported
-without its context.
+the effect size, group descriptives, an assumption check, and — where
+relevant — a visualisation. Multiple-comparison corrections are one
+click away in the same output panel, so nothing about a p-value gets
+reported without its context.
 
-> **Screenshot placeholder** — replace with a screenshot of AnalyVa's
-> inferential output panel showing p, effect size, and 95% CI together.
-> Suggested filename: `analyva-inferential-output.png`.
+Here is the full workflow, using an independent-samples t-test as the
+worked example.
+
+**Step 1 — Click *Import*.**
+Launch AnalyVa on an empty canvas. Click the **Import** button in the
+top toolbar (second from the left).
+
+![The Import button in the top toolbar](/blog/images/analyva-pvalue-01-import-button.png)
+
+**Step 2 — The import dialog opens.**
+An overlay appears asking for a file. Accepts `.xlsx`, `.csv`,
+and `.tsv`.
+
+![The Import Tabular Data dialog waiting for a file](/blog/images/analyva-pvalue-02-import-dialog.png)
+
+**Step 3 — Drop your file and preview.**
+Drag your dataset onto the drop zone (or click to browse). AnalyVa
+parses it and shows the shape and the first rows for sanity-checking
+(here: 577 rows × 63 columns, all numeric, no missing values). Click
+**Import** when the preview looks right.
+
+![The Import dialog showing a preview of 577 rows × 63 columns](/blog/images/analyva-pvalue-03-import-preview.png)
+
+**Step 4 — Open *Analyze → Compare Means → Independent Samples t-test*.**
+Every variable in the dataset now appears in the left sidebar. Open
+the **Analyze** menu → **Compare Means** → **Independent Samples t-test**.
+
+![The Analyze menu with Compare Means → Independent Samples t-test highlighted](/blog/images/analyva-pvalue-04-analyze-menu.png)
+
+**Step 5 — The t-test dialog opens.**
+A dialog appears with sensible defaults filled in. AnalyVa
+auto-detects the grouping variable and its levels — here Gender has
+two groups, Group A = 1 (n = 234), Group B = 2 (n = 343).
+
+![The Independent Samples t-test dialog with grouping variable auto-detected](/blog/images/analyva-pvalue-05-ttest-dialog.png)
+
+**Step 6 — Choose the test variable.**
+Open the *Test variable* dropdown and pick the numeric variable you
+want to compare across the two groups. In this example: `Teaching_Exp`.
+
+![The Test variable dropdown open with Teaching_Exp highlighted](/blog/images/analyva-pvalue-06-select-variable.png)
+
+**Step 7 — Click *Run*.**
+The dialog now shows your chosen test variable, grouping variable, and
+both group sizes. Click the red **Run** button.
+
+![The t-test dialog with Teaching_Exp selected and the Run button highlighted](/blog/images/analyva-pvalue-07-ready-run.png)
+
+**Step 8 — Read the results panel.**
+The right pane switches to **Results** and shows every reporting
+component in one view:
+
+- **Group Descriptives** — n, mean, SD, SE per group.
+- **Levene's Test for Equality of Variances** — F, p, and a plain-English "Equal Var?" verdict (here: Yes, p ≥ 0.05).
+- **t-test Results** — both the equal-variance version (t = -0.582, df = 575, p = 0.560) *and* Welch's (t = -0.580, df = 492.71, p = 0.562), with a checkmark on the one Levene recommends.
+- **Effect Size** — Cohen's d = -0.049, labelled *Negligible*.
+- **Box Plot Comparison** — a side-by-side visualisation.
+
+Notice how the interpretation lives right next to the p-value. You
+never have to hunt for the effect size, the assumption check, or the
+alternative test — everything a defensible report needs is in one
+scroll.
+
+![Independent Samples t-test results panel showing group descriptives, Levene, t-test values, Cohen's d, and a box plot](/blog/images/analyva-pvalue-08-results.png)
+
+Every table has its own **Copy**, **APA**, **HTML**, and **CSV** button
+above it — so a properly formatted APA sentence
+(*"t(575) = -0.58, p = .560, d = -0.05"*) is one click away.
 
 ## Further reading
 
