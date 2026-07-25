@@ -10,7 +10,7 @@ description: >-
 
 <div class="page-header">
   <div class="eyebrow">The Applied Statistics Guide</div>
-  <h1>Tutorials for the papers you're actually writing</h1>
+  <h1>A Practical Guide to Applied Statistics</h1>
   <p class="subtitle">
     Practical walkthroughs and reporting checklists for PLS-SEM, CB-SEM,
     general statistics, and computational qualitative analysis &mdash;
@@ -18,28 +18,75 @@ description: >-
   </p>
 </div>
 
-<div class="card-grid">
+<div class="gallery-grid">
   {% for post in site.posts %}
-    <article class="card">
-      <div class="meta">
-        {{ post.date | date: "%b %-d, %Y" }}
-        {% if post.category %} &nbsp;·&nbsp; {{ post.category }}{% endif %}
-        {% if post.read_time %} &nbsp;·&nbsp; {{ post.read_time }} min read{% endif %}
-      </div>
-      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-      {% if post.subtitle %}
-        <p>{{ post.subtitle }}</p>
-      {% elsif post.excerpt %}
-        <p>{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
+    {% assign card_size = post.size | default: "small" %}
+    {% assign card_color = post.color | default: "red" %}
+    <a href="{{ post.url | relative_url }}"
+       class="gallery-card size-{{ card_size }} accent-{{ card_color }}"
+       aria-label="{{ post.title | escape }}">
+
+      {% if post.image %}
+        <div class="card-image" style="background-image:url('{{ post.image | relative_url }}');"></div>
+      {% else %}
+        <div class="card-fallback"></div>
       {% endif %}
-      <div class="card-actions">
-        <a href="{{ post.url | relative_url }}" class="btn btn-secondary btn-sm">Read →</a>
-        {% if post.tier %}<span class="badge">{{ post.tier }}</span>{% endif %}
+
+      <div class="card-overlay"></div>
+
+      <div class="card-body">
+        {% if post.tags %}
+          <div class="card-tags">
+            {% for tag in post.tags limit:3 %}
+              <span class="card-tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+        <h3 class="card-title">{{ post.title }}</h3>
+        <div class="card-meta">
+          {{ post.date | date: "%b %-d, %Y" }}
+          {% if post.read_time %} &nbsp;&middot;&nbsp; {{ post.read_time }} min read{% endif %}
+        </div>
       </div>
-    </article>
+    </a>
   {% endfor %}
 </div>
 
+<script>
+  // Mouse-move parallax on gallery cards — desktop only.
+  (function () {
+    if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) return;
+
+    const cards = document.querySelectorAll('.gallery-card');
+    const MAX_TILT = 5;      // degrees
+    const SCALE = 1.04;
+
+    cards.forEach(card => {
+      let rafId = null;
+
+      card.addEventListener('mousemove', (e) => {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateY = ((x - centerX) / centerX) * MAX_TILT;
+          const rotateX = -((y - centerY) / centerY) * MAX_TILT;
+          card.style.transform =
+            `perspective(1000px) scale(${SCALE}) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        if (rafId) cancelAnimationFrame(rafId);
+        card.style.transform = '';
+      });
+    });
+  })();
+</script>
+
 {% include newsletter.html
-   heading="Get one post like these a week"
+   heading="Get one guide like these a week"
    body="Plus the free PLS-SEM Reporting Checklist as a welcome gift. Unsubscribe in one click." %}

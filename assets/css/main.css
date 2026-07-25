@@ -451,6 +451,176 @@ main.site-main { position: relative; z-index: 1; padding-top: 72px; }
   color: #4ade80;
 }
 
+/* ============================================
+   BLOG — GALLERY CARDS (masonry, per-post color, parallax hover)
+   ============================================ */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 220px;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px 96px;
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  transform-style: preserve-3d;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  will-change: transform;
+  color: #fff;
+  min-height: 220px;
+}
+
+.gallery-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Sizes — spans the grid */
+.gallery-card.size-small  { grid-column: span 1; grid-row: span 1; }
+.gallery-card.size-wide   { grid-column: span 2; grid-row: span 1; }
+.gallery-card.size-tall   { grid-column: span 1; grid-row: span 2; }
+.gallery-card.size-large  { grid-column: span 2; grid-row: span 2; }
+
+/* Background image layer */
+.gallery-card .card-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gallery-card:hover .card-image {
+  transform: scale(1.08);
+}
+
+/* Fallback: no image → solid accent color + dot pattern */
+.gallery-card .card-fallback {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+/* Dark gradient overlay so text stays readable */
+.gallery-card .card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0) 40%,
+    rgba(0,0,0,0.55) 85%,
+    rgba(0,0,0,0.75) 100%);
+  pointer-events: none;
+}
+
+/* Text content — bottom-left */
+.gallery-card .card-body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 24px 24px 22px;
+  z-index: 2;
+}
+
+.gallery-card .card-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.gallery-card .card-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: var(--font-mono);
+}
+
+.gallery-card .card-title {
+  margin: 0 0 8px 0;
+  font-family: var(--font-sans);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+
+.gallery-card.size-large .card-title { font-size: 28px; }
+.gallery-card.size-wide  .card-title { font-size: 24px; }
+
+.gallery-card .card-meta {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.3px;
+}
+
+/* Per-post accent palette
+   Applied to: fallback background, tag pills.
+   Choose via post front matter: color: red | teal | purple | amber | green | blue | pink */
+.gallery-card.accent-red    .card-fallback { background-color: #ff3a5c; }
+.gallery-card.accent-red    .card-tag       { background-color: #cc2848; }
+.gallery-card.accent-teal   .card-fallback { background-color: #14b8a6; }
+.gallery-card.accent-teal   .card-tag       { background-color: #0f7a70; }
+.gallery-card.accent-purple .card-fallback { background-color: #a855f7; }
+.gallery-card.accent-purple .card-tag       { background-color: #7c34c4; }
+.gallery-card.accent-amber  .card-fallback { background-color: #f59e0b; }
+.gallery-card.accent-amber  .card-tag       { background-color: #b8710a; }
+.gallery-card.accent-green  .card-fallback { background-color: #22c55e; }
+.gallery-card.accent-green  .card-tag       { background-color: #158a3f; }
+.gallery-card.accent-blue   .card-fallback { background-color: #3b82f6; }
+.gallery-card.accent-blue   .card-tag       { background-color: #2058bb; }
+.gallery-card.accent-pink   .card-fallback { background-color: #ec4899; }
+.gallery-card.accent-pink   .card-tag       { background-color: #b52c74; }
+
+/* Mobile — collapse to single column, no parallax */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 200px;
+    padding: 0 20px 64px;
+  }
+  .gallery-card.size-small,
+  .gallery-card.size-wide,
+  .gallery-card.size-tall,
+  .gallery-card.size-large {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .gallery-card:hover {
+    transform: none !important;
+  }
+}
+@media (max-width: 1024px) and (min-width: 769px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-card.size-large { grid-column: span 2; grid-row: span 2; }
+  .gallery-card.size-wide  { grid-column: span 2; grid-row: span 1; }
+  .gallery-card.size-tall  { grid-column: span 1; grid-row: span 2; }
+  .gallery-card.size-small { grid-column: span 1; grid-row: span 1; }
+}
+
 /* NEWSLETTER BLOCK */
 .newsletter-block {
   max-width: 720px;

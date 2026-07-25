@@ -8,7 +8,10 @@ category: PLS-SEM
 tier: Tier 1 · Problem query
 read_time: 9
 doi: 10.5281/zenodo.21536948
-tags: [PLS-SEM, HTMT, discriminant validity, SmartPLS]
+tags: [PLS-SEM, HTMT, discriminant validity]
+color: red
+size: large
+# image: /blog/images/htmt-hero.jpg   # uncomment + upload when ready
 ---
 
 You ran PLS-SEM, opened the report, and one HTMT value is 0.87. The
