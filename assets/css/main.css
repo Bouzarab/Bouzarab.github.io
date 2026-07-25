@@ -547,16 +547,22 @@ main.site-main { position: relative; z-index: 1; padding-top: 72px; }
 .gallery-card .card-title {
   margin: 0 0 8px 0;
   font-family: var(--font-sans);
-  font-size: 22px;
+  font-size: 17px;
   font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: -0.4px;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
   color: #fff;
   text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.gallery-card.size-large .card-title { font-size: 28px; }
-.gallery-card.size-wide  .card-title { font-size: 24px; }
+.gallery-card.size-large .card-title { font-size: 24px; -webkit-line-clamp: 4; }
+.gallery-card.size-wide  .card-title { font-size: 20px; -webkit-line-clamp: 3; }
+.gallery-card.size-tall  .card-title { font-size: 18px; -webkit-line-clamp: 5; }
 
 .gallery-card .card-meta {
   font-family: var(--font-sans);
