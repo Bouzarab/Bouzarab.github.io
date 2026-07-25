@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Pearson's r">
+  <rect width="800" height="600" fill="#14532d"/>
+  <text x="400" y="280"
+        font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-size="220" font-weight="700"
+        text-anchor="middle" fill="#f5c04a" letter-spacing="-6">r</text>
+  <text x="400" y="330"
+        font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-size="26" font-weight="600"
+        text-anchor="middle" fill="#ffffff" letter-spacing="10">PEARSON</text>
+</svg>

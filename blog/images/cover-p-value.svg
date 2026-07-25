@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="P-value">
+  <rect width="800" height="600" fill="#0f4c47"/>
+  <text x="400" y="290"
+        font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-size="150" font-weight="700"
+        text-anchor="middle" letter-spacing="-4">
+    <tspan fill="#f5c04a">p</tspan><tspan fill="#ffffff">-value</tspan>
+  </text>
+</svg>
