@@ -110,24 +110,115 @@ Components:
 
 ## Doing this in AnalyVa
 
-*A step-by-step tutorial with screenshots will be added here.*
+The workflow is almost identical for all three t-test variants — the
+only real decision point is which one you pick from the menu in
+Step 4. This walkthrough uses an **Independent Samples t-test** as the
+worked example, and calls out at each step how the other two variants
+diverge.
 
-> **Screenshot placeholder — Step 1: Import your data (dependent
-> variable plus a grouping variable for independent tests, or two
-> paired variables for paired tests).**
-> Suggested filename: `analyva-ttest-01-import.png`.
+**Step 1 — Click *Import*.**
+Launch AnalyVa on an empty canvas. Click the **Import** button in the
+top toolbar.
 
-> **Screenshot placeholder — Step 2: Choose the test type
-> (one-sample / independent / paired).**
-> Suggested filename: `analyva-ttest-02-choose-test.png`.
+![The Import button in the top toolbar](/blog/images/analyva-ttest-01-import-button.png)
 
-> **Screenshot placeholder — Step 3: Configure the test and enable
-> Welch's correction if variances differ.**
-> Suggested filename: `analyva-ttest-03-configure.png`.
+**Step 2 — The import dialog opens.**
+An overlay appears asking for a file (`.xlsx`, `.csv`, or `.tsv`).
 
-> **Screenshot placeholder — Step 4: Read the output — t, df, p, mean
-> difference with its CI, and Cohen's d with its CI.**
-> Suggested filename: `analyva-ttest-04-results.png`.
+![The Import Tabular Data dialog waiting for a file](/blog/images/analyva-ttest-02-import-dialog.png)
+
+**Step 3 — Load and preview.**
+Drop your dataset. AnalyVa reports the shape and shows the first rows
+so you can confirm it parsed correctly. Click **Import**.
+
+Your dataset needs to include:
+
+- **One-sample:** the continuous variable of interest;
+- **Independent-samples:** a continuous outcome + a grouping variable
+  with exactly two levels;
+- **Paired-samples:** two continuous variables measured on the same
+  cases (pre + post, spouse-A + spouse-B, etc.).
+
+![The Import dialog showing a preview of the data](/blog/images/analyva-ttest-03-import-preview.png)
+
+**Step 4 — Pick the right t-test from *Analyze → Compare Means*.**
+This is the only decision that changes. Open the **Analyze** menu →
+**Compare Means**. The submenu lists all three t-tests explicitly:
+
+- **One-Sample t-test** — for comparing one group's mean to a fixed
+  reference value.
+- **Independent Samples t-test** — for two different groups (this
+  example).
+- **Paired Samples t-test** — for two measurements from the same
+  subjects.
+
+If your design matches multiple items, re-read the decision tree
+earlier in this post — only one of them is appropriate for any given
+research question.
+
+![The Analyze → Compare Means submenu showing all three t-test options](/blog/images/analyva-ttest-04-choose-test-type.png)
+
+**Step 5 — The test dialog opens with defaults.**
+Pick **Independent Samples t-test** and AnalyVa opens a dialog with
+sensible defaults filled in. Here it auto-detected `Gender` as the
+grouping variable and mapped its two levels (Group A = 1, n = 234;
+Group B = 2, n = 343). The two group sample sizes appear as a
+one-line summary so you can catch obvious data errors immediately.
+
+For the other two variants the dialog looks slightly different:
+
+- The **One-Sample** dialog asks for a *Test value* — the reference
+  number to compare the mean to (population norm, chance level, etc.).
+- The **Paired-Samples** dialog asks for *Variable 1* and *Variable 2*
+  — the two paired measurements on the same cases — instead of a
+  test variable + a grouping variable.
+
+![The Independent Samples t-test dialog with defaults](/blog/images/analyva-ttest-05-dialog-opens.png)
+
+**Step 6 — Choose the test variable.**
+Open the *Test variable* dropdown and pick the numeric outcome you
+want to compare across the two groups. In this example: `Teaching_Exp`.
+
+![The Test variable dropdown open with Teaching_Exp highlighted](/blog/images/analyva-ttest-06-select-variable.png)
+
+**Step 7 — Click *Run*.**
+The dialog now shows your chosen test variable, grouping variable, and
+both group sizes. Click the red **Run** button.
+
+![The t-test dialog with Teaching_Exp selected and the Run button highlighted](/blog/images/analyva-ttest-07-ready-run.png)
+
+**Step 8 — Read the results panel.**
+The right pane switches to **Results** and shows everything a defensible
+t-test report needs, in one view:
+
+- **Group Descriptives** — n, mean, SD, SE for each group.
+- **Levene's Test for Equality of Variances** — F, p, and a
+  plain-English "Equal Var?" verdict. Here: **Yes, p ≥ .05**.
+- **t-test Results** — both the classical Student's version
+  (`t = -0.582, df = 575, p = .560`) *and* Welch's
+  (`t = -0.580, df = 492.71, p = .562`), with a **✓** on whichever one
+  Levene's test recommends. You never have to remember which to
+  report — AnalyVa flags it.
+- **Effect Size** — Cohen's *d* = -0.049, labelled *Negligible*. No
+  hunting for the effect size in a separate output.
+- **Box Plot Comparison** — a side-by-side visual so a reviewer can
+  see the distributions at a glance.
+
+For a paired t-test the same output appears with an extra
+*Correlation between paired scores* row and the mean of the
+differences instead of the mean difference between groups. For a
+one-sample test, Levene disappears (only one group) and the results
+compare the group mean to the reference value you specified.
+
+Every table has **Copy**, **APA**, **HTML**, and **CSV** buttons.
+Click **APA** on the t-test Results table and it copies a ready-to-paste
+sentence like:
+
+> "t(575) = -0.58, p = .560, d = -0.05"
+
+into your clipboard, ready to drop into the manuscript.
+
+![Independent Samples t-test results panel showing group descriptives, Levene, t-test values, Cohen's d, and a box plot](/blog/images/analyva-ttest-08-results.png)
 
 ## Further reading
 
