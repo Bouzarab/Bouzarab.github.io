@@ -3,17 +3,22 @@ layout: default
 permalink: /cite/
 title: How to Cite AnalyVa
 description: >-
-  Pre-formatted APA, MLA, Chicago, BibTeX, and RIS citations for AnalyVa
-  and its four benchmark validation studies.
+  Pick a citation style from the dropdown for AnalyVa and its four
+  benchmark validation studies — copied automatically, or download as
+  .bib / .ris for Zotero, Mendeley, and EndNote.
 ---
 
 <div class="page-header">
   <div class="eyebrow">Citation</div>
   <h1>How to Cite AnalyVa</h1>
   <p class="subtitle">
-    Copy-paste citations for AnalyVa and the four validation studies.
-    If your reference manager accepts BibTeX or RIS, use those directly.
+    Pick a style from the dropdown and it's copied to your clipboard
+    automatically. Or download the .bib / .ris file and import it
+    straight into Zotero, Mendeley, EndNote, or any reference manager.
   </p>
+  <div style="margin-top:24px;">
+    <a href="#" id="download-all-bib" class="btn btn-secondary btn-sm">⬇ Download all 5 references as one .bib file</a>
+  </div>
 </div>
 
 <article class="prose">
@@ -26,55 +31,34 @@ description: >-
     study in addition (see below).
   </p>
 
-  <h3 style="margin-top:24px;">APA (7th edition)</h3>
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>APA 7</span>
-      <button class="copy-btn" data-copy="apa-software">Copy</button>
+  <div class="citation-picker" data-entity="software">
+    <div class="citation-picker-header">
+      <label for="style-software">Citation style</label>
+      <select id="style-software" class="style-select">
+        <option value="apa">APA 7</option>
+        <option value="mla">MLA 9</option>
+        <option value="chicago">Chicago</option>
+        <option value="bibtex">BibTeX</option>
+        <option value="ris">RIS</option>
+      </select>
+      <button class="copy-btn" type="button">Copy</button>
+      <span class="citation-status">✓ Copied to clipboard</span>
     </div>
-<pre id="apa-software">Bouzar, A., & El Idrissi, K. (2026). AnalyVa (Version 4.2.2) [Computer software]. https://analyva.com</pre>
-  </div>
 
-  <h3>MLA (9th edition)</h3>
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>MLA 9</span>
-      <button class="copy-btn" data-copy="mla-software">Copy</button>
-    </div>
-<pre id="mla-software">Bouzar, Abdelouahd, and Khaoula El Idrissi. AnalyVa. Version 4.2.2, 2026, analyva.com.</pre>
-  </div>
+    <pre class="citation-display"></pre>
 
-  <h3>Chicago (author-date)</h3>
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>Chicago</span>
-      <button class="copy-btn" data-copy="chicago-software">Copy</button>
-    </div>
-<pre id="chicago-software">Bouzar, Abdelouahd, and Khaoula El Idrissi. 2026. AnalyVa (version 4.2.2). https://analyva.com.</pre>
-  </div>
-
-  <h3>BibTeX</h3>
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>BibTeX</span>
-      <button class="copy-btn" data-copy="bibtex-software">Copy</button>
-    </div>
-<pre id="bibtex-software">@software{bouzar_elidrissi_analyva_2026,
+    <div class="citation-sources" hidden>
+      <pre data-style="apa">Bouzar, A., & El Idrissi, K. (2026). AnalyVa (Version 4.2.2) [Computer software]. https://analyva.com</pre>
+      <pre data-style="mla">Bouzar, Abdelouahd, and Khaoula El Idrissi. AnalyVa. Version 4.2.2, 2026, analyva.com.</pre>
+      <pre data-style="chicago">Bouzar, Abdelouahd, and Khaoula El Idrissi. 2026. AnalyVa (version 4.2.2). https://analyva.com.</pre>
+      <pre data-style="bibtex">@software{bouzar_elidrissi_analyva_2026,
   author  = {Bouzar, Abdelouahd and El Idrissi, Khaoula},
   title   = {{AnalyVa}},
   year    = {2026},
   version = {4.2.2},
   url     = {https://analyva.com}
 }</pre>
-  </div>
-
-  <h3>RIS</h3>
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>RIS</span>
-      <button class="copy-btn" data-copy="ris-software">Copy</button>
-    </div>
-<pre id="ris-software">TY  - COMP
+      <pre data-style="ris">TY  - COMP
 AU  - Bouzar, Abdelouahd
 AU  - El Idrissi, Khaoula
 TI  - AnalyVa
@@ -82,6 +66,13 @@ PY  - 2026
 ET  - 4.2.2
 UR  - https://analyva.com
 ER  -</pre>
+    </div>
+
+    <div class="citation-downloads">
+      <span class="download-hint">Import into a reference manager:</span>
+      <a href="#" class="btn btn-secondary btn-sm download-btn" data-download-style="bibtex" data-download-filename="analyva-software.bib">⬇ .bib</a>
+      <a href="#" class="btn btn-secondary btn-sm download-btn" data-download-style="ris" data-download-filename="analyva-software.ris">⬇ .ris</a>
+    </div>
   </div>
 
   <hr>
@@ -100,36 +91,27 @@ ER  -</pre>
 
   <h3>Study 1 — General statistics vs R 4.4.0 + NIST StRD</h3>
 
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>APA 7</span>
-      <button class="copy-btn" data-copy="apa-study1">Copy</button>
+  <div class="citation-picker" data-entity="study1">
+    <div class="citation-picker-header">
+      <label for="style-study1">Citation style</label>
+      <select id="style-study1" class="style-select">
+        <option value="apa">APA 7</option>
+        <option value="mla">MLA 9</option>
+        <option value="chicago">Chicago</option>
+        <option value="bibtex">BibTeX</option>
+        <option value="ris">RIS</option>
+      </select>
+      <button class="copy-btn" type="button">Copy</button>
+      <span class="citation-status">✓ Copied to clipboard</span>
     </div>
-<pre id="apa-study1">Bouzar, A., & El Idrissi, K. (2026). Validation of the AnalyVa general statistical analysis engine: A nine-study benchmarking programme against R and NIST. Zenodo. https://doi.org/10.5281/zenodo.21536912</pre>
-  </div>
 
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>MLA 9</span>
-      <button class="copy-btn" data-copy="mla-study1">Copy</button>
-    </div>
-<pre id="mla-study1">Bouzar, Abdelouahd, and Khaoula El Idrissi. "Validation of the AnalyVa General Statistical Analysis Engine: A Nine-Study Benchmarking Programme Against R and NIST." Zenodo, 2026, doi.org/10.5281/zenodo.21536912.</pre>
-  </div>
+    <pre class="citation-display"></pre>
 
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>Chicago</span>
-      <button class="copy-btn" data-copy="chicago-study1">Copy</button>
-    </div>
-<pre id="chicago-study1">Bouzar, Abdelouahd, and Khaoula El Idrissi. 2026. "Validation of the AnalyVa General Statistical Analysis Engine: A Nine-Study Benchmarking Programme Against R and NIST." Zenodo. https://doi.org/10.5281/zenodo.21536912.</pre>
-  </div>
-
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>BibTeX</span>
-      <button class="copy-btn" data-copy="bib-study1">Copy</button>
-    </div>
-<pre id="bib-study1">@misc{bouzar_elidrissi_study1_2026,
+    <div class="citation-sources" hidden>
+      <pre data-style="apa">Bouzar, A., & El Idrissi, K. (2026). Validation of the AnalyVa general statistical analysis engine: A nine-study benchmarking programme against R and NIST. Zenodo. https://doi.org/10.5281/zenodo.21536912</pre>
+      <pre data-style="mla">Bouzar, Abdelouahd, and Khaoula El Idrissi. "Validation of the AnalyVa General Statistical Analysis Engine: A Nine-Study Benchmarking Programme Against R and NIST." Zenodo, 2026, doi.org/10.5281/zenodo.21536912.</pre>
+      <pre data-style="chicago">Bouzar, Abdelouahd, and Khaoula El Idrissi. 2026. "Validation of the AnalyVa General Statistical Analysis Engine: A Nine-Study Benchmarking Programme Against R and NIST." Zenodo. https://doi.org/10.5281/zenodo.21536912.</pre>
+      <pre data-style="bibtex">@misc{bouzar_elidrissi_study1_2026,
   author    = {Bouzar, Abdelouahd and El Idrissi, Khaoula},
   title     = {Validation of the {AnalyVa} General Statistical Analysis Engine: A Nine-Study Benchmarking Programme Against {R} and {NIST}},
   year      = {2026},
@@ -137,14 +119,7 @@ ER  -</pre>
   doi       = {10.5281/zenodo.21536912},
   url       = {https://doi.org/10.5281/zenodo.21536912}
 }</pre>
-  </div>
-
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>RIS</span>
-      <button class="copy-btn" data-copy="ris-study1">Copy</button>
-    </div>
-<pre id="ris-study1">TY  - GEN
+      <pre data-style="ris">TY  - GEN
 AU  - Bouzar, Abdelouahd
 AU  - El Idrissi, Khaoula
 TI  - Validation of the AnalyVa General Statistical Analysis Engine: A Nine-Study Benchmarking Programme Against R and NIST
@@ -153,40 +128,38 @@ PB  - Zenodo
 DO  - 10.5281/zenodo.21536912
 UR  - https://doi.org/10.5281/zenodo.21536912
 ER  -</pre>
+    </div>
+
+    <div class="citation-downloads">
+      <span class="download-hint">Import into a reference manager:</span>
+      <a href="#" class="btn btn-secondary btn-sm download-btn" data-download-style="bibtex" data-download-filename="analyva-study1-general-statistics.bib">⬇ .bib</a>
+      <a href="#" class="btn btn-secondary btn-sm download-btn" data-download-style="ris" data-download-filename="analyva-study1-general-statistics.ris">⬇ .ris</a>
+    </div>
   </div>
 
   <h3>Study 2 — PLS-SEM vs SmartPLS 4 (corporate reputation)</h3>
 
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>APA 7</span>
-      <button class="copy-btn" data-copy="apa-study2">Copy</button>
+  <div class="citation-picker" data-entity="study2">
+    <div class="citation-picker-header">
+      <label for="style-study2">Citation style</label>
+      <select id="style-study2" class="style-select">
+        <option value="apa">APA 7</option>
+        <option value="mla">MLA 9</option>
+        <option value="chicago">Chicago</option>
+        <option value="bibtex">BibTeX</option>
+        <option value="ris">RIS</option>
+      </select>
+      <button class="copy-btn" type="button">Copy</button>
+      <span class="citation-status">✓ Copied to clipboard</span>
     </div>
-<pre id="apa-study2">Bouzar, A., & El Idrissi, K. (2026). Numerical validation of AnalyVa's PLS-SEM engine against SmartPLS 4: Simple moderation, extended moderation, and multiple interaction models. Zenodo. https://doi.org/10.5281/zenodo.21536948</pre>
-  </div>
 
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>MLA 9</span>
-      <button class="copy-btn" data-copy="mla-study2">Copy</button>
-    </div>
-<pre id="mla-study2">Bouzar, Abdelouahd, and Khaoula El Idrissi. "Numerical Validation of AnalyVa's PLS-SEM Engine Against SmartPLS 4: Simple Moderation, Extended Moderation, and Multiple Interaction Models." Zenodo, 2026, doi.org/10.5281/zenodo.21536948.</pre>
-  </div>
+    <pre class="citation-display"></pre>
 
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>Chicago</span>
-      <button class="copy-btn" data-copy="chicago-study2">Copy</button>
-    </div>
-<pre id="chicago-study2">Bouzar, Abdelouahd, and Khaoula El Idrissi. 2026. "Numerical Validation of AnalyVa's PLS-SEM Engine Against SmartPLS 4: Simple Moderation, Extended Moderation, and Multiple Interaction Models." Zenodo. https://doi.org/10.5281/zenodo.21536948.</pre>
-  </div>
-
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>BibTeX</span>
-      <button class="copy-btn" data-copy="bib-study2">Copy</button>
-    </div>
-<pre id="bib-study2">@misc{bouzar_elidrissi_study2_2026,
+    <div class="citation-sources" hidden>
+      <pre data-style="apa">Bouzar, A., & El Idrissi, K. (2026). Numerical validation of AnalyVa's PLS-SEM engine against SmartPLS 4: Simple moderation, extended moderation, and multiple interaction models. Zenodo. https://doi.org/10.5281/zenodo.21536948</pre>
+      <pre data-style="mla">Bouzar, Abdelouahd, and Khaoula El Idrissi. "Numerical Validation of AnalyVa's PLS-SEM Engine Against SmartPLS 4: Simple Moderation, Extended Moderation, and Multiple Interaction Models." Zenodo, 2026, doi.org/10.5281/zenodo.21536948.</pre>
+      <pre data-style="chicago">Bouzar, Abdelouahd, and Khaoula El Idrissi. 2026. "Numerical Validation of AnalyVa's PLS-SEM Engine Against SmartPLS 4: Simple Moderation, Extended Moderation, and Multiple Interaction Models." Zenodo. https://doi.org/10.5281/zenodo.21536948.</pre>
+      <pre data-style="bibtex">@misc{bouzar_elidrissi_study2_2026,
   author    = {Bouzar, Abdelouahd and El Idrissi, Khaoula},
   title     = {Numerical Validation of {AnalyVa}'s {PLS-SEM} Engine Against {SmartPLS} 4: Simple Moderation, Extended Moderation, and Multiple Interaction Models},
   year      = {2026},
@@ -194,14 +167,7 @@ ER  -</pre>
   doi       = {10.5281/zenodo.21536948},
   url       = {https://doi.org/10.5281/zenodo.21536948}
 }</pre>
-  </div>
-
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>RIS</span>
-      <button class="copy-btn" data-copy="ris-study2">Copy</button>
-    </div>
-<pre id="ris-study2">TY  - GEN
+      <pre data-style="ris">TY  - GEN
 AU  - Bouzar, Abdelouahd
 AU  - El Idrissi, Khaoula
 TI  - Numerical Validation of AnalyVa's PLS-SEM Engine Against SmartPLS 4: Simple Moderation, Extended Moderation, and Multiple Interaction Models
@@ -210,40 +176,38 @@ PB  - Zenodo
 DO  - 10.5281/zenodo.21536948
 UR  - https://doi.org/10.5281/zenodo.21536948
 ER  -</pre>
+    </div>
+
+    <div class="citation-downloads">
+      <span class="download-hint">Import into a reference manager:</span>
+      <a href="#" class="btn btn-secondary btn-sm download-btn" data-download-style="bibtex" data-download-filename="analyva-study2-pls-sem.bib">⬇ .bib</a>
+      <a href="#" class="btn btn-secondary btn-sm download-btn" data-download-style="ris" data-download-filename="analyva-study2-pls-sem.ris">⬇ .ris</a>
+    </div>
   </div>
 
   <h3>Study 3 — CB-SEM (Wheaton) & PLS-SEM (burnout)</h3>
 
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>APA 7</span>
-      <button class="copy-btn" data-copy="apa-study3">Copy</button>
+  <div class="citation-picker" data-entity="study3">
+    <div class="citation-picker-header">
+      <label for="style-study3">Citation style</label>
+      <select id="style-study3" class="style-select">
+        <option value="apa">APA 7</option>
+        <option value="mla">MLA 9</option>
+        <option value="chicago">Chicago</option>
+        <option value="bibtex">BibTeX</option>
+        <option value="ris">RIS</option>
+      </select>
+      <button class="copy-btn" type="button">Copy</button>
+      <span class="citation-status">✓ Copied to clipboard</span>
     </div>
-<pre id="apa-study3">Bouzar, A., & El Idrissi, K. (2026). Numerical validation of the AnalyVa SEM estimation engine: A two-study benchmarking program against SmartPLS. Zenodo. https://doi.org/10.5281/zenodo.21537010</pre>
-  </div>
 
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>MLA 9</span>
-      <button class="copy-btn" data-copy="mla-study3">Copy</button>
-    </div>
-<pre id="mla-study3">Bouzar, Abdelouahd, and Khaoula El Idrissi. "Numerical Validation of the AnalyVa SEM Estimation Engine: A Two-Study Benchmarking Program Against SmartPLS." Zenodo, 2026, doi.org/10.5281/zenodo.21537010.</pre>
-  </div>
+    <pre class="citation-display"></pre>
 
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>Chicago</span>
-      <button class="copy-btn" data-copy="chicago-study3">Copy</button>
-    </div>
-<pre id="chicago-study3">Bouzar, Abdelouahd, and Khaoula El Idrissi. 2026. "Numerical Validation of the AnalyVa SEM Estimation Engine: A Two-Study Benchmarking Program Against SmartPLS." Zenodo. https://doi.org/10.5281/zenodo.21537010.</pre>
-  </div>
-
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>BibTeX</span>
-      <button class="copy-btn" data-copy="bib-study3">Copy</button>
-    </div>
-<pre id="bib-study3">@misc{bouzar_elidrissi_study3_2026,
+    <div class="citation-sources" hidden>
+      <pre data-style="apa">Bouzar, A., & El Idrissi, K. (2026). Numerical validation of the AnalyVa SEM estimation engine: A two-study benchmarking program against SmartPLS. Zenodo. https://doi.org/10.5281/zenodo.21537010</pre>
+      <pre data-style="mla">Bouzar, Abdelouahd, and Khaoula El Idrissi. "Numerical Validation of the AnalyVa SEM Estimation Engine: A Two-Study Benchmarking Program Against SmartPLS." Zenodo, 2026, doi.org/10.5281/zenodo.21537010.</pre>
+      <pre data-style="chicago">Bouzar, Abdelouahd, and Khaoula El Idrissi. 2026. "Numerical Validation of the AnalyVa SEM Estimation Engine: A Two-Study Benchmarking Program Against SmartPLS." Zenodo. https://doi.org/10.5281/zenodo.21537010.</pre>
+      <pre data-style="bibtex">@misc{bouzar_elidrissi_study3_2026,
   author    = {Bouzar, Abdelouahd and El Idrissi, Khaoula},
   title     = {Numerical Validation of the {AnalyVa} {SEM} Estimation Engine: A Two-Study Benchmarking Program Against {SmartPLS}},
   year      = {2026},
@@ -251,14 +215,7 @@ ER  -</pre>
   doi       = {10.5281/zenodo.21537010},
   url       = {https://doi.org/10.5281/zenodo.21537010}
 }</pre>
-  </div>
-
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>RIS</span>
-      <button class="copy-btn" data-copy="ris-study3">Copy</button>
-    </div>
-<pre id="ris-study3">TY  - GEN
+      <pre data-style="ris">TY  - GEN
 AU  - Bouzar, Abdelouahd
 AU  - El Idrissi, Khaoula
 TI  - Numerical Validation of the AnalyVa SEM Estimation Engine: A Two-Study Benchmarking Program Against SmartPLS
@@ -267,40 +224,38 @@ PB  - Zenodo
 DO  - 10.5281/zenodo.21537010
 UR  - https://doi.org/10.5281/zenodo.21537010
 ER  -</pre>
+    </div>
+
+    <div class="citation-downloads">
+      <span class="download-hint">Import into a reference manager:</span>
+      <a href="#" class="btn btn-secondary btn-sm download-btn" data-download-style="bibtex" data-download-filename="analyva-study3-sem-benchmark.bib">⬇ .bib</a>
+      <a href="#" class="btn btn-secondary btn-sm download-btn" data-download-style="ris" data-download-filename="analyva-study3-sem-benchmark.ris">⬇ .ris</a>
+    </div>
   </div>
 
   <h3>Study 4 — CFA, MGA, latent growth, endogeneity</h3>
 
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>APA 7</span>
-      <button class="copy-btn" data-copy="apa-study4">Copy</button>
+  <div class="citation-picker" data-entity="study4">
+    <div class="citation-picker-header">
+      <label for="style-study4">Citation style</label>
+      <select id="style-study4" class="style-select">
+        <option value="apa">APA 7</option>
+        <option value="mla">MLA 9</option>
+        <option value="chicago">Chicago</option>
+        <option value="bibtex">BibTeX</option>
+        <option value="ris">RIS</option>
+      </select>
+      <button class="copy-btn" type="button">Copy</button>
+      <span class="citation-status">✓ Copied to clipboard</span>
     </div>
-<pre id="apa-study4">Bouzar, A., & El Idrissi, K. (2026). Validating AnalyVa against SmartPLS 4: A benchmark of CB-SEM factor analysis, latent growth curve modelling, and Gaussian copula analysis. Zenodo. https://doi.org/10.5281/zenodo.21537354</pre>
-  </div>
 
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>MLA 9</span>
-      <button class="copy-btn" data-copy="mla-study4">Copy</button>
-    </div>
-<pre id="mla-study4">Bouzar, Abdelouahd, and Khaoula El Idrissi. "Validating AnalyVa Against SmartPLS 4: A Benchmark of CB-SEM Factor Analysis, Latent Growth Curve Modelling, and Gaussian Copula Analysis." Zenodo, 2026, doi.org/10.5281/zenodo.21537354.</pre>
-  </div>
+    <pre class="citation-display"></pre>
 
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>Chicago</span>
-      <button class="copy-btn" data-copy="chicago-study4">Copy</button>
-    </div>
-<pre id="chicago-study4">Bouzar, Abdelouahd, and Khaoula El Idrissi. 2026. "Validating AnalyVa Against SmartPLS 4: A Benchmark of CB-SEM Factor Analysis, Latent Growth Curve Modelling, and Gaussian Copula Analysis." Zenodo. https://doi.org/10.5281/zenodo.21537354.</pre>
-  </div>
-
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>BibTeX</span>
-      <button class="copy-btn" data-copy="bib-study4">Copy</button>
-    </div>
-<pre id="bib-study4">@misc{bouzar_elidrissi_study4_2026,
+    <div class="citation-sources" hidden>
+      <pre data-style="apa">Bouzar, A., & El Idrissi, K. (2026). Validating AnalyVa against SmartPLS 4: A benchmark of CB-SEM factor analysis, latent growth curve modelling, and Gaussian copula analysis. Zenodo. https://doi.org/10.5281/zenodo.21537354</pre>
+      <pre data-style="mla">Bouzar, Abdelouahd, and Khaoula El Idrissi. "Validating AnalyVa Against SmartPLS 4: A Benchmark of CB-SEM Factor Analysis, Latent Growth Curve Modelling, and Gaussian Copula Analysis." Zenodo, 2026, doi.org/10.5281/zenodo.21537354.</pre>
+      <pre data-style="chicago">Bouzar, Abdelouahd, and Khaoula El Idrissi. 2026. "Validating AnalyVa Against SmartPLS 4: A Benchmark of CB-SEM Factor Analysis, Latent Growth Curve Modelling, and Gaussian Copula Analysis." Zenodo. https://doi.org/10.5281/zenodo.21537354.</pre>
+      <pre data-style="bibtex">@misc{bouzar_elidrissi_study4_2026,
   author    = {Bouzar, Abdelouahd and El Idrissi, Khaoula},
   title     = {Validating {AnalyVa} Against {SmartPLS} 4: A Benchmark of {CB-SEM} Factor Analysis, Latent Growth Curve Modelling, and {Gaussian} Copula Analysis},
   year      = {2026},
@@ -308,14 +263,7 @@ ER  -</pre>
   doi       = {10.5281/zenodo.21537354},
   url       = {https://doi.org/10.5281/zenodo.21537354}
 }</pre>
-  </div>
-
-  <div class="citation-block">
-    <div class="citation-label">
-      <span>RIS</span>
-      <button class="copy-btn" data-copy="ris-study4">Copy</button>
-    </div>
-<pre id="ris-study4">TY  - GEN
+      <pre data-style="ris">TY  - GEN
 AU  - Bouzar, Abdelouahd
 AU  - El Idrissi, Khaoula
 TI  - Validating AnalyVa Against SmartPLS 4: A Benchmark of CB-SEM Factor Analysis, Latent Growth Curve Modelling, and Gaussian Copula Analysis
@@ -324,6 +272,13 @@ PB  - Zenodo
 DO  - 10.5281/zenodo.21537354
 UR  - https://doi.org/10.5281/zenodo.21537354
 ER  -</pre>
+    </div>
+
+    <div class="citation-downloads">
+      <span class="download-hint">Import into a reference manager:</span>
+      <a href="#" class="btn btn-secondary btn-sm download-btn" data-download-style="bibtex" data-download-filename="analyva-study4-cfa-mga-copula.bib">⬇ .bib</a>
+      <a href="#" class="btn btn-secondary btn-sm download-btn" data-download-style="ris" data-download-filename="analyva-study4-cfa-mga-copula.ris">⬇ .ris</a>
+    </div>
   </div>
 
   <hr>
@@ -344,29 +299,119 @@ ER  -</pre>
 </article>
 
 <script>
-  // Copy-to-clipboard for each citation block
-  document.querySelectorAll('.copy-btn[data-copy]').forEach(btn => {
-    btn.addEventListener('click', async () => {
-      const target = document.getElementById(btn.dataset.copy);
-      if (!target) return;
-      try {
-        await navigator.clipboard.writeText(target.textContent);
-        const original = btn.textContent;
-        btn.textContent = 'Copied';
-        btn.classList.add('copied');
-        setTimeout(() => {
-          btn.textContent = original;
-          btn.classList.remove('copied');
-        }, 1600);
-      } catch (e) {
-        // Fallback: select the text
-        const range = document.createRange();
-        range.selectNode(target);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-      }
+(function () {
+  function getSourceText(picker, style) {
+    var src = picker.querySelector('.citation-sources [data-style="' + style + '"]');
+    return src ? src.textContent.trim() : '';
+  }
+
+  function renderStyle(picker) {
+    var select = picker.querySelector('.style-select');
+    var display = picker.querySelector('.citation-display');
+    var text = getSourceText(picker, select.value);
+    display.textContent = text;
+    return text;
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text).then(function () { return true; }).catch(function () { return false; });
+    }
+    return Promise.resolve(false);
+  }
+
+  function flashStatus(picker) {
+    var status = picker.querySelector('.citation-status');
+    if (!status) return;
+    status.classList.add('show');
+    clearTimeout(status._hideTimer);
+    status._hideTimer = setTimeout(function () {
+      status.classList.remove('show');
+    }, 2200);
+  }
+
+  function flashCopyBtn(picker) {
+    var btn = picker.querySelector('.copy-btn');
+    if (!btn) return;
+    var original = btn.textContent;
+    btn.textContent = 'Copied';
+    btn.classList.add('copied');
+    clearTimeout(btn._resetTimer);
+    btn._resetTimer = setTimeout(function () {
+      btn.textContent = original;
+      btn.classList.remove('copied');
+    }, 1600);
+  }
+
+  function downloadText(filename, text, mime) {
+    var blob = new Blob([text], { type: mime + ';charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+
+  var pickers = document.querySelectorAll('.citation-picker');
+
+  pickers.forEach(function (picker) {
+    renderStyle(picker);
+
+    var select = picker.querySelector('.style-select');
+    select.addEventListener('change', function () {
+      var text = renderStyle(picker);
+      copyText(text).then(function (ok) {
+        if (ok) {
+          flashStatus(picker);
+          flashCopyBtn(picker);
+        }
+      });
+    });
+
+    var copyBtn = picker.querySelector('.copy-btn');
+    copyBtn.addEventListener('click', function () {
+      var display = picker.querySelector('.citation-display');
+      copyText(display.textContent).then(function (ok) {
+        if (ok) {
+          flashStatus(picker);
+          flashCopyBtn(picker);
+        } else {
+          var range = document.createRange();
+          range.selectNode(display);
+          window.getSelection().removeAllRanges();
+          window.getSelection().addRange(range);
+        }
+      });
+    });
+
+    picker.querySelectorAll('.download-btn').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var style = btn.getAttribute('data-download-style');
+        var filename = btn.getAttribute('data-download-filename');
+        var text = getSourceText(picker, style);
+        var mime = style === 'bibtex' ? 'application/x-bibtex' : 'application/x-research-info-systems';
+        downloadText(filename, text, mime);
+      });
     });
   });
+
+  var allBtn = document.getElementById('download-all-bib');
+  if (allBtn) {
+    allBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var parts = [];
+      pickers.forEach(function (picker) {
+        var text = getSourceText(picker, 'bibtex');
+        if (text) parts.push(text);
+      });
+      downloadText('analyva-all-citations.bib', parts.join('\n\n'), 'application/x-bibtex');
+    });
+  }
+})();
 </script>
 
 {% include newsletter.html
