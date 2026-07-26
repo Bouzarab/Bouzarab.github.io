@@ -46,6 +46,36 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://analyva.com/blog/analyva-command-palette-keyboard-shortcuts/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://analyva.com/blog/recoding-and-variable-types-in-analyva/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://analyva.com/blog/qualitative-coding-in-analyva/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://analyva.com/blog/pls-sem-with-indicator-cleaning/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://analyva.com/blog/recode-variables-for-multi-group-analysis/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://analyva.com/blog/moderation-analysis-in-pls-sem/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://analyva.com/privacy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

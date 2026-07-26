@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Two groups split for multi-group analysis">
+  <rect width="800" height="600" fill="#efe6d0"/>
+  <line x1="400" y1="90" x2="400" y2="510" stroke="#1a1a1a" stroke-width="4" stroke-dasharray="14 12" opacity="0.6"/>
+  <g fill="none" stroke="#1a1a1a" stroke-width="6">
+    <rect x="150" y="200" width="80" height="180"/>
+    <rect x="250" y="150" width="80" height="230"/>
+  </g>
+  <g fill="none" stroke="#d62828" stroke-width="6">
+    <rect x="470" y="170" width="80" height="210"/>
+    <rect x="570" y="230" width="80" height="150"/>
+  </g>
+  <text x="235" y="450" font-family="'Inter',sans-serif" font-size="30" font-weight="700" text-anchor="middle" fill="#1a1a1a" letter-spacing="2">GROUP A</text>
+  <text x="565" y="450" font-family="'Inter',sans-serif" font-size="30" font-weight="700" text-anchor="middle" fill="#d62828" letter-spacing="2">GROUP B</text>
+  <circle cx="400" cy="500" r="10" fill="#1a1a1a"/>
+</svg>
