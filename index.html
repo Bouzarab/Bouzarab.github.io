@@ -978,12 +978,12 @@
     }
     .pricing-card .btn { width: 100%; justify-content: center; position: relative; }
 
-    /* Student & Institution cards */
+    /* Institution card */
     .special-pricing {
-      max-width: 1060px;
+      max-width: 520px;
       margin: 48px auto 0;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
       gap: 24px;
     }
     .special-card {
@@ -1004,29 +1004,6 @@
     .special-card .icon-large { font-size: 40px; margin-bottom: 16px; }
     .special-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
     .special-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px; }
-
-    .student-plans {
-      display: flex; justify-content: center; gap: 16px; margin-bottom: 0; flex-wrap: wrap;
-    }
-    .student-plan {
-      display: inline-block;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--border);
-      padding: 20px 28px;
-      border-radius: var(--radius-md);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      min-width: 160px;
-    }
-    .student-plan:hover {
-      border-color: var(--accent);
-      background: var(--accent-subtle);
-      transform: translateY(-2px);
-      text-decoration: none;
-    }
-    .student-plan-name { color: #fff; font-size: 13px; font-weight: 700; }
-    .student-plan-price { color: var(--accent); font-size: 28px; font-weight: 800; margin: 6px 0; }
-    .student-plan-period { color: var(--text-muted); font-size: 12px; }
 
     .inst-stats {
       display: flex; justify-content: center; gap: 40px; margin: 24px 0; flex-wrap: wrap;
@@ -2178,24 +2155,6 @@
       <!-- Special pricing -->
       <div class="special-pricing">
         <div class="special-card reveal reveal-delay-1">
-          <div class="icon-large">🎓</div>
-          <h3>Student Pricing</h3>
-          <p>Full access to all features, at the same price as everyone else.</p>
-          <div class="student-plans">
-            <a href="https://analyva.lemonsqueezy.com/checkout/buy/b7030684-53aa-4032-9a9d-80f25707fa59" class="student-plan">
-              <div class="student-plan-name">Monthly</div>
-              <div class="student-plan-price">$7</div>
-              <div class="student-plan-period">per month</div>
-            </a>
-            <a href="https://analyva.lemonsqueezy.com/checkout/buy/45e59348-af02-48a6-a086-82e1cf0a57e1" class="student-plan">
-              <div class="student-plan-name">Annual</div>
-              <div class="student-plan-price">$70</div>
-              <div class="student-plan-period">per year — same as regular</div>
-            </a>
-          </div>
-        </div>
-
-        <div class="special-card reveal reveal-delay-2">
           <div class="icon-large">🏛️</div>
           <h3>Institutions & Universities</h3>
           <p>Equip your students and faculty with AnalyVa at a discounted rate.</p>
